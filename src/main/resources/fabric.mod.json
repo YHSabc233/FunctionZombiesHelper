@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "yhs_fzh",
+  "version": "${version}",
+  "name": "Function Zombies Helper",
+  "description": "A helper mod for function zombies",
+  "authors": [
+    "YHSabc233"
+  ],
+  "contact": {
+    "issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
+    "sources": "https://github.com/YHSabc233/FunctionZombiesHelper"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/yhs_fzh/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.yhsabc233.fzh.FzhDataGenerator"
+    ],
+    "client": [
+      "com.yhsabc233.fzh.FzhClient"
+    ],
+    "main": [
+      "com.yhsabc233.Fzh"
+    ]
+  },
+  "mixins": [
+    "yhs_fzh.mixins.json",
+    {
+      "config": "yhs_fzh.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabric-key-binding-api-v1": "*",
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+      },
+      "badges": [],
+      "parent": {
+        "id": "yhs_fzh",
+        "name": "Function Zombies Helper",
+        "description": "A helper mod for function zombies.",
+        "icon": "assets/yhs_fzh/icon.png",
+        "badges": []
+      },
+      "update_checker": false
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
+  "modmenu.descriptionTranslation.yhs_fzh": "A helper mod for function zombies.",
+
+  "fzh.enabled": "Function Zombies Helper is enabled now.",
+  "fzh.disabled": "Function Zombies Helper is disabled now.",
+
+  "fzh.tips.usingbetaversion.title": "You're using BETA version of FZH!",
+  "fzh.tips.usingbetaversion.description": "if you encounter any issues, report them to YHSabc233, thanks!",
+
+  "fzh.message.reload": "Config file reloaded",
+  "fzh.message.set": "%s has been set to %s",
+  "fzh.message.error": "Error: Please type a valid %s value",
+  "fzh.message.unknown": "Unknown command, please use '/fzh help' to get help.",
+
+  "fzh.message.help_0": "\n§a--- FZH Help ---\n",
+  "fzh.message.help_1": "§a/fzh help : Show the help list.\n",
+  "fzh.message.help_2": "§a/fzh set <ConfigItem> ：Modify an option in a config.\n",
+  "fzh.message.help_3": "§a/fzh reload ：Reload config.\n",
+  "fzh.message.help_4": "§a/fzh switch <E/D> ：Switch mod.\n",
+  "fzh.message.help_5": "§a--- --- --- ---",
+
+  "fzh.message.set.positionCustom": "HPDP Position has been set to X=%d, Y=%d",
+  "fzh.message.nowPosition": "HPDP Position is：X=%d, Y=%d",
+  "fzh.message.set.positionCustom.format": "Please use CUSTOM <X> <Y> (e.g. CUSTOM -180 -50)",
+  "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 10 or above to avoid overlapping display.",
+
+  "key.fzh.playerHidden": "Player Hidden",
+  "key.fzh.category": "Function Zombies Helper"
+}

@@ -1,0 +1,30 @@
+{
+  "modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
+  "modmenu.descriptionTranslation.yhs_fzh": "一个为函数僵尸末日制作的辅助模组。",
+
+  "fzh.enabled": "已启用Function Zombies Helper。",
+  "fzh.disabled": "已禁用Function Zombies Helper。",
+
+  "fzh.tips.usingbetaversion.title": "你正在使用FZH的测试版本！",
+  "fzh.tips.usingbetaversion.description": "可能会出现一些bug，如有发现问题，请反馈给YHSabc233。",
+
+  "fzh.message.reload": "已重载配置文件",
+  "fzh.message.set": "已将 %s 设为 %s",
+  "fzh.message.error": "错误：请输入有效 %s 值",
+  "fzh.message.unknown": "未知或无效的指令，请使用 /fzh help 查看帮助。",
+
+  "fzh.message.help_0": "\n§a--- FZH 帮助 ---\n",
+  "fzh.message.help_1": "§a/fzh help :显示此帮助列表。\n",
+  "fzh.message.help_2": "§a/fzh set <配置项> ：修改某个配置的选项。\n",
+  "fzh.message.help_3": "§a/fzh reload ：重载配置文件。\n",
+  "fzh.message.help_4": "§a/fzh switch <E/D> 设置模组开关。\n",
+  "fzh.message.help_5": "§a--- --- --- ---",
+
+  "fzh.message.set.positionCustom": "已将HPDP显示位置更改为 X=%d, Y=%d",
+  "fzh.message.nowPosition": "当前HPDP显示位置：X=%d, Y=%d",
+  "fzh.message.set.positionCustom.format": "请使用格式: CUSTOM <X> <Y> (例 CUSTOM -180 -50)",
+  "fzh.message.set.textMargin.warn": "建议您将文本间距调整至10及以上，避免显示重叠。",
+
+  "key.fzh.playerHidden": "玩家隐藏",
+  "key.fzh.category": "Function Zombies Helper"
+}
