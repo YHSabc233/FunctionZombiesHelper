@@ -10,20 +10,31 @@
 
   "fzh.message.reload": "已重载配置文件",
   "fzh.message.set": "已将 %s 设为 %s",
+  "fzh.message.language": "语言已切换至 %s",
   "fzh.message.error": "错误：请输入有效 %s 值",
-  "fzh.message.unknown": "未知或无效的指令，请使用 /fzh help 查看帮助。",
+  "fzh.message.error.language": "切换失败，因为：%s",
+  "fzh.message.unknown": "§c未知或无效的指令，请使用 /fzh help 查看帮助。",
 
   "fzh.message.help_0": "\n§a--- FZH 帮助 ---\n",
   "fzh.message.help_1": "§a/fzh help :显示此帮助列表。\n",
   "fzh.message.help_2": "§a/fzh set <配置项> ：修改某个配置的选项。\n",
   "fzh.message.help_3": "§a/fzh reload ：重载配置文件。\n",
   "fzh.message.help_4": "§a/fzh switch <E/D> 设置模组开关。\n",
-  "fzh.message.help_5": "§a--- --- --- ---",
+  "fzh.message.help_5": "§a--- --- --- ---\n",
+  "fzh.message.help_6": "§e(你还可以试着输入 '/fzh help <config>' 来获取配置选项的帮助。)",
 
-  "fzh.message.set.positionCustom": "已将HPDP显示位置更改为 X=%d, Y=%d",
-  "fzh.message.nowPosition": "当前HPDP显示位置：X=%d, Y=%d",
+  "fzh.message.help.set_0": "\n§a--- FZH 配置帮助 ---\n",
+  "fzh.message.help.set_1": "§aposition：如果你只输入'position'会查询你当前的HPDP显示坐标。\n但如果在后面加上'x y'（例如'300 200'），则会改变HPDP的显示坐标。",
+  "fzh.message.help.set_2": "§amaxPlayersToShow：设置HPDP最大玩家显示数量。",
+  "fzh.message.help.set_3": "§atextMargin：设置HPDP上下文本间距。",
+
+  "fzh.message.set.positionCustom": "已将HPDP显示位置更改为 X: %d, Y: %d",
+  "fzh.message.nowPosition": "当前HPDP显示位置：X: %d, Y: %d",
   "fzh.message.set.positionCustom.format": "请使用格式: CUSTOM <X> <Y> (例 CUSTOM -180 -50)",
-  "fzh.message.set.textMargin.warn": "建议您将文本间距调整至10及以上，避免显示重叠。",
+  "fzh.message.set.textMargin.warn": "建议您将文本间距调整至8及以上，避免显示重叠。",
+
+  "fzh.screen.positionModify.title": "血量显示位置修改界面",
+  "fzh.screen.config.title": "FZH 配置",
 
   "key.fzh.playerHidden": "玩家隐藏",
   "key.fzh.category": "Function Zombies Helper"

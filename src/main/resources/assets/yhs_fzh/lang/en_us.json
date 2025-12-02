@@ -6,24 +6,35 @@
   "fzh.disabled": "Function Zombies Helper is disabled now.",
 
   "fzh.tips.usingbetaversion.title": "You're using BETA version of FZH!",
-  "fzh.tips.usingbetaversion.description": "if you encounter any issues, report them to YHSabc233, thanks!",
+  "fzh.tips.usingbetaversion.description": "If you encounter any issues, report them to YHSabc233, thanks!",
 
   "fzh.message.reload": "Config file reloaded",
   "fzh.message.set": "%s has been set to %s",
+  "fzh.message.language": "Language was changed to %s",
   "fzh.message.error": "Error: Please type a valid %s value",
-  "fzh.message.unknown": "Unknown command, please use '/fzh help' to get help.",
+  "fzh.message.error.language": "Switch failed. beacuse: %s",
+  "fzh.message.unknown": "§cUnknown command, please use '/fzh help' to get help.",
 
   "fzh.message.help_0": "\n§a--- FZH Help ---\n",
   "fzh.message.help_1": "§a/fzh help : Show the help list.\n",
   "fzh.message.help_2": "§a/fzh set <ConfigItem> ：Modify an option in a config.\n",
   "fzh.message.help_3": "§a/fzh reload ：Reload config.\n",
   "fzh.message.help_4": "§a/fzh switch <E/D> ：Switch mod.\n",
-  "fzh.message.help_5": "§a--- --- --- ---",
+  "fzh.message.help_5": "§a--- --- --- ---\n",
+  "fzh.message.help_6": "§e(You can also type '/fzh help <config>' to get help about config.)",
 
-  "fzh.message.set.positionCustom": "HPDP Position has been set to X=%d, Y=%d",
-  "fzh.message.nowPosition": "HPDP Position is：X=%d, Y=%d",
+  "fzh.message.help.set_0": "\n§a--- FZH Config Help ---\n",
+  "fzh.message.help.set_1": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' (like '300 200') behind the 'position' then will change the HPDP position.",
+  "fzh.message.help.set_2": "§amaxPlayersToShow : Set HPDP's max player show counts.",
+  "fzh.message.help.set_3": "§atextMargin : Set HPDP's vertical text margin.",
+
+  "fzh.message.set.positionCustom": "HPDP Position has been set to X: %d, Y: %d",
+  "fzh.message.nowPosition": "HPDP Position is：X: %d, Y: %d",
   "fzh.message.set.positionCustom.format": "Please use CUSTOM <X> <Y> (e.g. CUSTOM -180 -50)",
-  "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 10 or above to avoid overlapping display.",
+  "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 8 or above to avoid overlapping display.",
+
+  "fzh.screen.positionModify.title": "HPDP Position Modify GUI",
+  "fzh.screen.config.title": "FZH Config",
 
   "key.fzh.playerHidden": "Player Hidden",
   "key.fzh.category": "Function Zombies Helper"

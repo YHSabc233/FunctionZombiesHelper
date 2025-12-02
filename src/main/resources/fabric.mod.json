@@ -8,10 +8,11 @@
     "YHSabc233"
   ],
   "contact": {
+    "homepage": "https://modrinth.com/mod/function-zombies-helper",
     "issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
     "sources": "https://github.com/YHSabc233/FunctionZombiesHelper"
   },
-  "license": "All-Rights-Reserved",
+  "license": "GPLv3",
   "icon": "assets/yhs_fzh/icon.png",
   "environment": "client",
   "entrypoints": {
@@ -22,7 +23,10 @@
       "com.yhsabc233.fzh.FzhClient"
     ],
     "main": [
-      "com.yhsabc233.Fzh"
+      "com.yhsabc233.fzh.Fzh"
+    ],
+    "modmenu": [
+      "com.yhsabc233.fzh.config.FzhConfigApi"
     ]
   },
   "mixins": [
@@ -53,7 +57,7 @@
         "icon": "assets/yhs_fzh/icon.png",
         "badges": []
       },
-      "update_checker": false
+      "update_checker": true
     }
   }
 }
