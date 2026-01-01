@@ -1,9 +1,9 @@
-package com.yhsabc233.fzh.utils;
+package com.yhsabc233.fzh.util;
 
 import net.minecraft.client.MinecraftClient;
 
 public class LanguageUtils {
-    public static String getGameLanguage() {
+    public static String getCurrentLanguage() {
         MinecraftClient client = MinecraftClient.getInstance();
         return client.getLanguageManager().getLanguage().toLowerCase();
     }

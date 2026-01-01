@@ -10,26 +10,24 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.awt.*;
-
 @Mixin(TitleScreen.class)
-public class TitleScreenMixin extends Screen {
-    
-    protected TitleScreenMixin(Text title) {
-        super(title);
-    }
-    
-    @Inject(at = @At("RETURN"), method = "render")
-    private void fzh$drawCustomText(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        TitleScreen screen = (TitleScreen)(Object)this;
-        Text customText = Text.literal("FZH Loaded");
-        
-        int textWidth = client.textRenderer.getWidth(customText);
-        
-        int x = screen.width - textWidth - 2;
-        int y = screen.height - 20;
-        
-        context.drawTextWithShadow(client.textRenderer,customText, x, y, 0xFFFFFF);
-    }
+public class TitleScreenMixin extends Screen{
+	
+	protected TitleScreenMixin(Text title) {
+		super(title);
+	}
+	
+	@Inject(at = @At("RETURN"), method = "render")
+	private void fzhLoadedTextRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+		MinecraftClient client = MinecraftClient.getInstance();
+		TitleScreen screen = (TitleScreen)(Object)this;
+		Text customText = Text.literal("FZH Loaded");
+		
+		int textWidth = client.textRenderer.getWidth(customText);
+		
+		int x = screen.width - textWidth - 2;
+		int y = screen.height - 20;
+		
+		context.drawTextWithShadow(client.textRenderer, customText, x, y, 0xFFFFFF);
+	}
 }

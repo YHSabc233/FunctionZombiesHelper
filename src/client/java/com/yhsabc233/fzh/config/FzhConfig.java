@@ -1,43 +1,43 @@
 package com.yhsabc233.fzh.config;
 
 public class FzhConfig {
-    /**配置文件版本*/
-    public int version = 2;
+
+    public int version = 3;
     
-    /**HUD显示X坐标*/
+    // HPDP Config
     public int hpdpDisplayX = 10;
-    /**HUD显示Y坐标*/
     public int hpdpDisplayY = 10;
-    /**模组全局开关*/
-    public boolean isEnabled = true;
-    
-    /**HPDP最多可显示的玩家数量*/
+	public boolean hpdpSwitch = true;
     public int maxPlayersToShow = 8;
-    /**配色方案*/
     public String colorScheme = "TEXT";
-    /**HPDP显示模式*/
     public String displayMode = "HP";
-    /**HPDP显示位置*/
     public String position = "CUSTOM";
-    /**文本间距*/
+    public boolean valueBeforeName = true;
+	public boolean hideSpectator = true;
+    
+    // SST Config
+    public int sstDisplayX = 5;
+    public int sstDisplayY = 50;
+	public boolean sstSwitch = false;
+    public int gameRound = 1;
+    public int playerGold = 0;
+    public boolean canDisplay = true;
+    public boolean canReset = false;
+	
+	// Timer Config
+	public int timerDisplayX = 50;
+	public int timerDisplayY = 50;
+	public boolean timerSwitch = false;
+	
+    // Global Config
+    public boolean isEnabled = true;
     public int textMargin = 10;
-    /**HUD隐藏时是否保持显示*/
     public boolean alwaysDisplayed = false;
-    /**数值是否显示在玩家名称前*/
-    public boolean valueBeforeName = false;
-    /**什么时候自动启用FZH*/
     public String displayWhen = "ALWAYS";
     
     public boolean playerHiddenSwitch = false;
-    //for normally config. /\
-    
-    
-    //for mod's config. \/
-    public int gameRound = 1;
-    public int playerGold = 0;
-    public boolean sstSwitch = false;
-    public boolean canDisplay = true;
 
     public static FzhConfig createDefault(){return new FzhConfig();}
+    public static FzhConfig CONFIG = FzhConfig.createDefault();
     public static void init() {FzhConfigManager.loadConfig();}
 }

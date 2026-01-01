@@ -1,4 +1,4 @@
-package com.yhsabc233.fzh.utils;
+package com.yhsabc233.fzh.util;
 
 public class StringUtils {
     public static Integer getNumbersFromString(String string) {

@@ -24,18 +24,34 @@
   "fzh.message.help_6": "§e(You can also type '/fzh help <config>' to get help about config.)",
 
   "fzh.message.help.set_0": "\n§a--- FZH Config Help ---\n",
-  "fzh.message.help.set_1": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' (like '300 200') behind the 'position' then will change the HPDP position.",
+  "fzh.message.help.set_1": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' §e(like '300 200') §abehind the 'position' then will change the HPDP position.",
   "fzh.message.help.set_2": "§amaxPlayersToShow : Set HPDP's max player show counts.",
   "fzh.message.help.set_3": "§atextMargin : Set HPDP's vertical text margin.",
 
-  "fzh.message.set.positionCustom": "HPDP Position has been set to X: %d, Y: %d",
-  "fzh.message.nowPosition": "HPDP Position is：X: %d, Y: %d",
+  "fzh.message.set.current": "%s's current value is : %s",
+  "fzh.message.set.positionCustom": "Position has been set to X: %d, Y: %d",
+  "fzh.message.nowPosition": "Position is：X: %d, Y: %d",
   "fzh.message.set.positionCustom.format": "Please use CUSTOM <X> <Y> (e.g. CUSTOM -180 -50)",
   "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 8 or above to avoid overlapping display.",
 
-  "fzh.screen.positionModify.title": "HPDP Position Modify GUI",
+  "fzh.screen.positionModify.title": "Position Modify GUI",
   "fzh.screen.config.title": "FZH Config",
 
   "key.fzh.playerHidden": "Player Hidden",
-  "key.fzh.category": "Function Zombies Helper"
+  "key.fzh.category": "Function Zombies Helper",
+
+  "fzh.options.text": "%s : %s",
+  "fzh.options.done": "Done",
+  "fzh.options.cancel": "Cancel",
+  "fzh.options.reset": "Reset",
+  "fzh.options.config.hpdpDisplayX": "HealthDisplay X Position",
+  "fzh.options.config.hpdpDisplayY": "HealthDisplay Y Position",
+  "fzh.options.config.isEnabled": "Mod switch",
+  "fzh.options.config.maxPlayersToShow": "Max players to show",
+  "fzh.options.config.colorScheme": "Color scheme",
+  "fzh.options.config.displayMode": "Display mode",
+  "fzh.options.config.textMargin": "Text margin",
+  "fzh.options.config.alwaysDisplayed": "Always displayed",
+  "fzh.options.config.valueBeforeName": "Display before name"
+
 }
