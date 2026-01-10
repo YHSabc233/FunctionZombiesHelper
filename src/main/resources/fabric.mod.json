@@ -4,9 +4,7 @@
   "version": "${version}",
   "name": "Function Zombies Helper",
   "description": "A helper mod for Function Zombies.",
-  "authors": [
-    "YHSabc233"
-  ],
+  "authors": ["YHSabc233"],
   "contact": {
     "homepage": "https://modrinth.com/mod/function-zombies-helper",
     "issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
@@ -14,20 +12,13 @@
   },
   "license": "GPLv3",
   "icon": "assets/yhs_fzh/icon.png",
+
   "environment": "client",
   "entrypoints": {
-    "fabric-datagen": [
-      "com.yhsabc233.fzh.FzhDataGenerator"
-    ],
-    "client": [
-      "com.yhsabc233.fzh.FzhClient"
-    ],
-    "main": [
-      "com.yhsabc233.fzh.Fzh"
-    ],
-    "modmenu": [
-      "com.yhsabc233.fzh.config.FzhConfigModMenuApi"
-    ]
+    "fabric-datagen": ["top.yhsabc233.fzh.FzhDataGenerator"],
+    "client": ["top.yhsabc233.fzh.FzhClient"],
+    "main": ["top.yhsabc233.fzh.Fzh"],
+    "modmenu": ["top.yhsabc233.fzh.config.FzhConfigModMenuApi"]
   },
   "mixins": [
     "yhs_fzh.mixins.json",
@@ -39,7 +30,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": ["1.21.5","1.21.6"]
+    "minecraft": ["1.21.5"]
   },
   "suggests": {
     "modmenu": "*"

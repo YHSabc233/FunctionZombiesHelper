@@ -1,14 +1,4 @@
-<style>
-    .avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        margin-right: 8px;
-    }
-    .date {
-        text-align: right;
-    }
-</style>
+> ## **Beta 5 还未更新完毕，目前你只能看到一部分内容。**
 
 # Function Zombies Helper  
 [English](README.md) | 简体中文
@@ -19,11 +9,18 @@
 
 - 血量显示
 - Show Spawn Time
-- 以及更多？emm...
+- 也许还有更多？emm...
 
-前往 [Modrinth](https://modrinth.com/mod/function-zombies-helper) 获取更多信息。
+请前往 [Modrinth](https://modrinth.com/mod/function-zombies-helper) 获取模组文件。
 
 ## 更新日志
+### 1.0.0 Beta 5 <u>（非最终版 未更新完毕）</u>
+1. 修改 模组包名从 "com.yhsabc233.fzh" 更名为 "top.yhsabc233.fzh"。
+2. 修改 重制了模组图标。
+3. 修复 GitHub 仓库中 README 文件的显示问题。
+
+2026年1月10日 17:20:53 ***（非最终更新时间）***
+
 ### 1.0.0 Beta 4
 #### 元旦快乐！
 1. ***修改 FZH 配置修改可视化，但是原先的指令因为一些问题被全部移除（Beta 5 重构后会重新加入），但又新增 /fzhconfig。***
@@ -32,10 +29,10 @@
 3. 修改 完善本模组在 Mod Menu 中的信息显示。
 4. 修改 为优化显示体验，从此版本开始将 valueBeforeName 配置项默认设置为 true。
 
-<p class="date">2026年1月1日 19:35:00</p>
+2026年1月1日 20:30:00
 
 本次更新参与者
-- <img class="avatar" src="/img/head/YHSabc233.jpg">YHSabc233</img> [1. 2. 3. 4.]
+- <img width=25 src="/assets/avatar/YHSabc233.jpg">YHSabc233</img> [1. 2. 3. 4.]
 
 ### 1.0.0 Beta 3 RE
 <!--1. 新增 配置项“displayWhen”：
@@ -55,11 +52,11 @@
    “DISTANCE”简化为“DIST”。
 7. 修复 /fzh set position命令直接执行不会显示当前HPDP显示位置，反而/fzh set会触发，并且还无法正常显示数值。
 
-<p class="date">2025年12月2日 21:08:56</p>
+2025年12月2日 21:08:56
 
 本次更新参与者
-- <img class="avatar" src="/img/head/YHSabc233.jpg">YHSabc233</img> [1. 2. 3. 4. 5. 7. 8.]
-- <img class="avatar" src="/img/head/XMM010.jpg">XMM010</img> [6.]
+- <img width=25 src="/assets/avatar/YHSabc233.jpg">YHSabc233</img> [1. 2. 3. 4. 5. 7. 8.]
+- <img width=25 src="/assets/avatar/XMM010.jpg">XMM010</img> [6.]
 
 ### 1.0.0 Beta 2
 1. 配置项“keepVIsibleWhenHudHidden”的名称简化为"alwaysDisplayed"。
@@ -67,8 +64,8 @@
 3. 模组名称移除YH'S前缀。
 
 本次更新参与者
-- <img class="avatar" src="/img/head/YHSabc233.jpg">YHSabc233</img> [2. 3.]
-- <img class="avatar" src="/img/head/XMM010.jpg">XMM010</img> [1.]
+- <img width=25 src="/assets/avatar/YHSabc233.jpg">YHSabc233</img> [2. 3.]
+- <img width=25 src="/assets/avatar/XMM010.jpg">XMM010</img> [1.]
 
 ### 1.0.0 Beta 1
 1. 重构模组，现在不再需要Fabric Language Kotlin前置Mod。
@@ -76,4 +73,4 @@
 3. position配置项只能自定义坐标，提供的四个预设项无法使用。
 
 本次更新参与者
-- <img class="avatar" src="/img/head/YHSabc233.jpg">YHSabc233</img> [1. 2. 3.]
+- <img width=25 src="/assets/avatar/YHSabc233.jpg">YHSabc233</img> [1. 2. 3.]
