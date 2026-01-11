@@ -1,4 +1,6 @@
 //file:noinspection GroovyAssignabilityCheck
+//file:noinspection GrUnresolvedAccess
+
 plugins {
     id 'fabric-loom' version '1.11.8'
     id 'maven-publish'

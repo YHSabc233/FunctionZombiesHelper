@@ -1,4 +1,6 @@
 {
+  "fzh.loaded": "FZH 已加载",
+
   "modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
   "modmenu.descriptionTranslation.yhs_fzh": "一个为函数僵尸末日制作的辅助模组。",
 
@@ -23,10 +25,10 @@
   "fzh.message.help_5": "§a--- --- --- ---\n",
   "fzh.message.help_6": "§e(你还可以试着输入 '/fzh help <config>' 来获取配置选项的帮助。)",
 
-  "fzh.message.help.set_0": "\n§a--- FZH 配置帮助 ---\n",
-  "fzh.message.help.set_1": "§aposition：如果你只输入'position'会查询你当前的血量显示显示坐标。\n但如果在后面加上'x y'§e（例如'300 200'）§a，则会改变血量显示的显示坐标。",
-  "fzh.message.help.set_2": "§amaxPlayersToShow：设置血量显示最大玩家显示数量。",
-  "fzh.message.help.set_3": "§atextMargin：设置模组文本上下文本间距。",
+  "fzh.message.help.set.title": "\n§a--- FZH 配置帮助 ---\n",
+  "fzh.message.help.set.position": "§aposition：如果你只输入'position'会查询你当前的血量显示显示坐标。\n但如果在后面加上'x y'§e（例如'300 200'）§a，则会改变血量显示的显示坐标。",
+  "fzh.message.help.set.maxPlayersToShow": "§amaxPlayersToShow：设置血量显示最大玩家显示数量。",
+  "fzh.message.help.set.TextMargin": "§atextMargin：设置模组文本上下文本间距。",
 
   "fzh.message.set.current": "%s 的当前值为：%s",
   "fzh.message.set.positionCustom": "已将显示位置更改为 X: %d, Y: %d",
@@ -34,7 +36,8 @@
   "fzh.message.set.positionCustom.format": "请使用格式: CUSTOM <X> <Y> (例 CUSTOM -180 -50)",
   "fzh.message.set.textMargin.warn": "建议您将文本间距调整至8及以上，避免显示重叠。",
 
-  "fzh.screen.positionModify.title": "血量显示 位置修改界面",
+  "fzh.screen.positionModify.title": "位置修改界面",
+  "fzh.screen.positionModify.tips": "拖动以修改物件的显示位置。",
   "fzh.screen.config.title": "FZH 配置界面",
 
   "key.fzh.playerHidden": "玩家隐藏",

@@ -1,22 +1,18 @@
 package top.yhsabc233.fzh;
 
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.minecraft.client.toast.SystemToast;
+import net.minecraft.text.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import top.yhsabc233.fzh.command.FzhCommand;
 import top.yhsabc233.fzh.config.FzhConfig;
 import top.yhsabc233.fzh.gui.hud.HealthDisplayHud;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-
-import net.minecraft.client.toast.SystemToast;
-import net.minecraft.text.Text;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class FzhClient implements ClientModInitializer {
  
-	public static String MOD_ID = "yhs_fzh";
-	public static final boolean DEBUG = false;
+	public static final String MOD_ID = "yhs_fzh";
     private static final boolean MOD_IS_BETA_VERSION = true;
     private boolean IS_BETA_TIPS_SHOWN = false;
 	
@@ -25,9 +21,11 @@ public class FzhClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         try {
-			// initialize mod.
 	        FzhCommand.init();
             FzhConfig.init();
+	        
+	        HealthDisplayHud.init();
+	        //TimerHud.init();
             
             ClientPlayConnectionEvents.JOIN.register(((clientPlayNetworkHandler, packetSender, minecraftClient) ->{
 				if (!minecraftClient.isInSingleplayer()) {
@@ -40,18 +38,8 @@ public class FzhClient implements ClientModInitializer {
 						);
 						IS_BETA_TIPS_SHOWN = true;
 					}
-					if (DEBUG) {
-						SystemToast.add(
-							minecraftClient.getToastManager(),
-							SystemToast.Type.NARRATOR_TOGGLE,
-							Text.literal("DEBUG"),
-							Text.literal("模组正以DEBUG模式运行。")
-						);
-					}
-					HealthDisplayHud.init();
 					//ShowSpawnTimeHud.init();
 					//PowerUpHud.init();
-					//TimerHud.init();
 				}
             }));
             

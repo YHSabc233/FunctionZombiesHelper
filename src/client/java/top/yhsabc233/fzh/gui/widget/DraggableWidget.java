@@ -13,20 +13,18 @@ public class DraggableWidget extends ClickableWidget {
 	/// <summary>
 	/// 仅适用于 {@link PositionModifyScreen} ，也许会在未来改进以支持更多。
 	/// </summary>
-	public DraggableWidget(int x, int y, int width, int height) {
-		super(x, y, width, height, Text.empty());
+	// TODO: 支持其它组件。
+	public DraggableWidget(int x, int y, int width, int height, String widgetName) {
+		super(x, y, width, height, Text.of(widgetName));
 	}
-	
-	MinecraftClient client = MinecraftClient.getInstance();
 	
 	@Override
 	protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
-		MinecraftClient client = MinecraftClient.getInstance();
 		
 		int startColor;
 		int endColor;
 		
-		if ( isMouseOver(mouseX, mouseY) ) {
+		if (isMouseOver(mouseX, mouseY)) {
 			startColor = 0xFFFFFFFF;
 			endColor = 0xFFFFFFFF;
 		} else {
@@ -35,17 +33,45 @@ public class DraggableWidget extends ClickableWidget {
 		}
 		
 		context.fillGradient(getX(), getY(), getX() + this.width, getY() + this.height, startColor, endColor);
-		MultilineText text = MultilineText.create(client.textRenderer, Text.empty()
-			.append("Player001 §a❤ 20\n").append("Player002 §a❤ 20\n").append("Player003 §a❤ 20\n").append("Player004 §a❤ 20")
+		MultilineText text = MultilineText.create(MinecraftClient.getInstance().textRenderer, Text.empty()
+				.append("Player001 §a❤ 20\n")
+				.append("Player002 §a❤ 20\n")
+				.append("Player003 §a❤ 20\n")
+				.append("Player004 §a❤ 20")
 		);
+		/*MultilineText text;
+		
+		if (getMessage().toString() == "hpdpPositionDrag") {
+			text = MultilineText.create(MinecraftClient.getInstance().textRenderer, Text.empty()
+				.append("Player001 §a❤ 20\n")
+				.append("Player002 §a❤ 20\n")
+				.append("Player003 §a❤ 20\n")
+				.append("Player004 §a❤ 20")
+			);
+		}else if (getMessage().toString() == "timerPositionDrag") {
+			text = MultilineText.create(MinecraftClient.getInstance().textRenderer, Text.empty()
+				.append("00:00:00")
+			);
+		}else {
+			text = MultilineText.create(MinecraftClient.getInstance().textRenderer, Text.literal("ERROR"));
+		}*/
+		
 		text.drawWithShadow(context, getX(), getY(), 10, 0xFFFFFF);
 	}
 	
 	@Override
-	protected void onDrag(double mouseX, double mouseY, double deltaX, double deltaY){
-		this.setPosition((int) mouseX,(int) mouseY);
+	protected void onDrag(double mouseX, double mouseY, double deltaX, double deltaY) {
+		this.setPosition((int) mouseX, (int) mouseY);
+		
 		FzhConfig.CONFIG.hpdpDisplayX = (int) mouseX;
 		FzhConfig.CONFIG.hpdpDisplayY = (int) mouseY;
+		/*if (getMessage().toString() == "hpdpPositionDrag") {
+			FzhConfig.CONFIG.hpdpDisplayX = (int) mouseX;
+			FzhConfig.CONFIG.hpdpDisplayY = (int) mouseY;
+		}else if (getMessage().toString() == "timerPositionDrag") {
+			FzhConfig.CONFIG.timerDisplayX = (int) mouseX;
+			FzhConfig.CONFIG.timerDisplayY = (int) mouseY;
+		}*/
 	}
 	
 	@Override

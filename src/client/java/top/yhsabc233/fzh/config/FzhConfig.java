@@ -1,7 +1,8 @@
 package top.yhsabc233.fzh.config;
 
+@SuppressWarnings({"CanBeFinal", "unused"})
 public class FzhConfig {
-
+	// Config Version
     public int version = 3;
     
     // HPDP Config

@@ -33,8 +33,9 @@ public class FzhConfigScreen extends Screen {
 	public ButtonWidget setColorSchemeToIconButton;
 	public ButtonWidget setColorSchemeToTextButton;
 	*/
-    public FzhConfig config = FzhConfig.CONFIG;
+    public final FzhConfig config = FzhConfig.CONFIG;
 	
+    @SuppressWarnings("CodeBlock2Expr")
     @Override
     public void init() {
         valueBeforeNameButton = ButtonWidget.builder(Text.translatable(config.valueBeforeName ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.valueBeforeName")), button -> {

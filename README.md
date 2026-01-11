@@ -1,17 +1,16 @@
-> ## **Beta 5 has not been updated yet. Currently, you can only see Beta 5 part 1 of FZH.**
+> Beta 5 has not been updated yet.  
+> Currently, you can only see a part of FZH.
 
-# Function Zombies Helper  
-English | [简体中文](README-SC.md)  
+# Function Zombies Helper
 
-A helper mod for Function Zombies.
+English | [简体中文(有更新日志)](README-SC.md)
+
+A helper mod for **Function Zombies**.
 
 ## Features
 
 - Health Display
 - Show Spawn Time
-- well... maybe more?
+- mmm... maybe more?
 
-Visit [Modrinth](https://modrinth.com/mod/function-zombies-helper) for mod file.
-
-## Change Log
-It will be translated in the next version. Before that, please visit [here](README-SC.md) (Chinese Ver.)
+Need mod file? Here:[Modrinth](https://modrinth.com/mod/function-zombies-helper).

@@ -1,4 +1,6 @@
 {
+  "fzh.loaded": "FZH Loaded",
+
   "modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
   "modmenu.descriptionTranslation.yhs_fzh": "A helper mod for function zombies.",
 
@@ -23,10 +25,10 @@
   "fzh.message.help_5": "§a--- --- --- ---\n",
   "fzh.message.help_6": "§e(You can also type '/fzh help <config>' to get help about config.)",
 
-  "fzh.message.help.set_0": "\n§a--- FZH Config Help ---\n",
-  "fzh.message.help.set_1": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' §e(like '300 200') §abehind the 'position' then will change the HPDP position.",
-  "fzh.message.help.set_2": "§amaxPlayersToShow : Set HPDP's max player show counts.",
-  "fzh.message.help.set_3": "§atextMargin : Set HPDP's vertical text margin.",
+  "fzh.message.help.set.title": "\n§a--- FZH Config Help ---\n",
+  "fzh.message.help.set.position": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' §e(like '300 200') §abehind the 'position' then will change the HPDP position.",
+  "fzh.message.help.set.maxPlayersToShow": "§amaxPlayersToShow : Set HPDP's max player show counts.",
+  "fzh.message.help.set.TextMargin": "§atextMargin : Set HPDP's vertical text margin.",
 
   "fzh.message.set.current": "%s's current value is : %s",
   "fzh.message.set.positionCustom": "Position has been set to X: %d, Y: %d",
@@ -35,6 +37,7 @@
   "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 8 or above to avoid overlapping display.",
 
   "fzh.screen.positionModify.title": "Position Modify GUI",
+  "fzh.screen.positionModify.tips": "Drag text to modify the widget display position.",
   "fzh.screen.config.title": "FZH Config",
 
   "key.fzh.playerHidden": "Player Hidden",

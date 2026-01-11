@@ -6,21 +6,25 @@ import net.minecraft.scoreboard.ReadableScoreboardScore;
 import net.minecraft.scoreboard.ScoreHolder;
 import net.minecraft.scoreboard.ScoreboardObjective;
 
-public class ScoreUtils{
+public class ScoreUtils {
 	public static int playerStat(AbstractClientPlayerEntity player) {
 		MinecraftClient client = MinecraftClient.getInstance();
-		if (client.world == null) {return 1;}
-		if (client.player == null) {return 1;}
-		if (client.getNetworkHandler() == null) {return 1;}
+		if (client.world == null || client.player == null || client.getNetworkHandler() != null) {
+			return 1;
+		}
 		
-		ScoreHolder scoreHolder = ScoreHolder.fromName(player.getName().getString());
+		ScoreHolder scoreHolder = ScoreHolder.fromProfile(player.getGameProfile());
 		
-		ScoreboardObjective statBoard = client.getNetworkHandler().getWorld().getScoreboard().getNullableObjective("stat.player");
+		ScoreboardObjective statBoard = client.getNetworkHandler().getScoreboard().getNullableObjective("stat.player");
 		
-		if (statBoard == null) {return 1;}
+		if (statBoard == null) {
+			return 1;
+		}
 		
 		ReadableScoreboardScore score = statBoard.getScoreboard().getScore(scoreHolder, statBoard);
-		if (score == null) {return 1;}
+		if (score == null) {
+			return 1;
+		}
 		
 		return score.getScore();
 	}
