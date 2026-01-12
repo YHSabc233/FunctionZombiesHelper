@@ -4,7 +4,6 @@
   "package": "top.yhsabc233.fzh.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "SoundManagerMixin",
     "TitleScreenMixin"
   ],
   "injectors": {

@@ -10,9 +10,8 @@ import net.minecraft.text.Text;
 
 /// <summary>
 /// 针对 客户端玩家 使用的一系列工具。
-///
-/// TODO: 但目前只实现发送聊天反馈这一功能，仍需要开发。
 /// </summary>
+@SuppressWarnings("unused")
 public class PlayerUtils {
 	public static final Text FEEDBACK_PREFIX = Text.of("§r[§c§lFZH§r]");
 	
@@ -41,30 +40,5 @@ public class PlayerUtils {
 		}
 		
 		context.getSource().sendFeedback(message);
-	}
-	
-	public static void sendUseFzhHelpFeedback(CommandContext<FabricClientCommandSource> context) {
-		sendSimpleFeedback(
-			context,
-			Text.translatable("fzh.message.unknown"),
-			true,
-			false
-		);
-	}
-	
-	public static void sendFzhHelpFeedback(CommandContext<FabricClientCommandSource> context) {
-		sendSimpleFeedback(
-			context,
-			Text.empty()
-				.append(Text.translatable("fzh.message.help_0"))
-				.append(Text.translatable("fzh.message.help_1"))
-				.append(Text.translatable("fzh.message.help_2"))
-				.append(Text.translatable("fzh.message.help_3"))
-				.append(Text.translatable("fzh.message.help_4"))
-				.append(Text.translatable("fzh.message.help_5"))
-				.append(Text.translatable("fzh.message.help_6")),
-			true,
-			true
-		);
 	}
 }

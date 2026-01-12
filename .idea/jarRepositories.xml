@@ -46,5 +46,10 @@
       <option name="name" value="Terraformers" />
       <option name="url" value="https://maven.terraformersmc.com/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="Xander Maven" />
+      <option name="name" value="Xander Maven" />
+      <option name="url" value="https://maven.isxander.dev/releases" />
+    </remote-repository>
   </component>
 </project>

@@ -38,7 +38,7 @@
 
   "fzh.screen.positionModify.title": "位置修改界面",
   "fzh.screen.positionModify.tips": "拖动以修改物件的显示位置。",
-  "fzh.screen.config.title": "FZH 配置界面",
+  "fzh.screen.config.title": "FZH 配置修改界面",
 
   "key.fzh.playerHidden": "玩家隐藏",
   "key.fzh.category": "Function Zombies Helper",
