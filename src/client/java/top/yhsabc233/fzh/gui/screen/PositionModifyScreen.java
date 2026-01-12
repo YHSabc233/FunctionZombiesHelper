@@ -1,16 +1,15 @@
 package top.yhsabc233.fzh.gui.screen;
 
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.text.Text;
 import top.yhsabc233.fzh.config.FzhConfig;
 import top.yhsabc233.fzh.config.FzhConfigManager;
 import top.yhsabc233.fzh.gui.widget.DraggableWidget;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.text.Text;
 
 public class PositionModifyScreen extends Screen {
-	
 	private final Screen parent;
 	
 	public PositionModifyScreen(Screen parent) {
@@ -21,7 +20,6 @@ public class PositionModifyScreen extends Screen {
 	public ButtonWidget doneButton;
 	public ButtonWidget resetButton;
 	public DraggableWidget hpdpPositionDrag;
-	//public DraggableWidget timerPositionDrag;
 	
 	@Override
 	protected void init() {
@@ -48,25 +46,16 @@ public class PositionModifyScreen extends Screen {
 			"hpdpPositionDrag"
 		);
 		
-		/*timerPositionDrag = new DraggableWidget(
-			FzhConfig.CONFIG.timerDisplayX,
-			FzhConfig.CONFIG.timerDisplayY,
-			50,
-			10,
-			"timerPositionDrag"
-		);*/
-		
 		addDrawableChild(doneButton);
 		addDrawableChild(resetButton);
 		addDrawableChild(hpdpPositionDrag);
-		//addDrawableChild(timerPositionDrag);
 	}
 	
 	@Override
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 		super.render(context, mouseX, mouseY, delta);
 		
-		context.drawTextWithShadow(textRenderer, Text.translatable("fzh.screen.positionModify.tips"), width / 2 - 80, height / 2 - 280, 0xFFFFFF);
+		context.drawTextWithShadow(textRenderer, Text.translatable("fzh.screen.positionModify.tips"), width / 2 - 80, height / 2 - 220, 0xFFFFFF);
 		context.drawTextWithShadow(textRenderer, Text.translatable("fzh.screen.positionModify.title"), width / 2 - 50, height / 2 - 250, 0xFFFFFF);
 	}
 	

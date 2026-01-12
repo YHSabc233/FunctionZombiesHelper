@@ -4,34 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bd28b06-06a6-430f-bab3-16dafca3954b" name="更改" comment="A few changes XD">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="2bd28b06-06a6-430f-bab3-16dafca3954b" name="更改" comment="A few changes then ready for FZH Beta 5 XD">
+      <change afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfigYACLApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README-SC.md" beforeDir="false" afterPath="$PROJECT_DIR$/README-SC.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/avatar/XMM010.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/avatar/YHSabc233.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/FzhClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/FzhClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/FzhDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/FzhDataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/command/FzhCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/command/FzhCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/features/HealthDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/features/HealthDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/features/ShowSpawnTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/features/ShowSpawnTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfigModMenuApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/config/FzhConfigModMenuApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/HealthDisplayHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/HealthDisplayHud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/PowerUpHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/PowerUpHud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/ShowSpawnTimeHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/ShowSpawnTimeHud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/TimerHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/hud/TimerHud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/screen/FzhConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/screen/FzhConfigScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/screen/PositionModifyScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/screen/PositionModifyScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/widget/DraggableWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/gui/widget/DraggableWidget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/mixin/SoundManagerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/mixin/SoundManagerMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/mixin/TitleScreenMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/mixin/TitleScreenMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/LanguageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/LanguageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/LanguageUtils.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/PlayerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/PlayerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/ScoreUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/ScoreUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/top/yhsabc233/fzh/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/resources/yhs_fzh.client.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/resources/yhs_fzh.client.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yhs_fzh/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/yhs_fzh/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yhs_fzh/lang/zh_cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/yhs_fzh/lang/zh_cn.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
@@ -70,6 +65,12 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="yhs_fzh-fabric" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="fabric" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -77,7 +78,19 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -104,26 +117,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.yhs_fzh-fabric [build].executor": "Run",
-    "Gradle.下载源代码.executor": "Run",
-    "Gradle.构建 yhs_fzh-fabric.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Projects/MC/Mod/yhs_fzh-fabric/src/main/resources/assets/yhs_fzh",
-    "project.structure.last.edited": "问题",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2954023",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.yhs_fzh-fabric [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.下载源代码.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.构建 yhs_fzh-fabric.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;7c87c4f2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/MC/Mod/yhs_fzh-fabric/src/main/resources/assets/yhs_fzh&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;问题&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2954023&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\MC\Mod\yhs_fzh-fabric\src\main\resources\assets\yhs_fzh" />
@@ -184,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768039336873</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="A few changes then ready for FZH Beta 5 XD">
+      <option name="closed" value="true" />
+      <created>1768149106891</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768149106891</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,7 +219,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -213,6 +234,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.0.0-B5 (part 1) commit" />
     <MESSAGE value="A few changes XD" />
-    <option name="LAST_COMMIT_MESSAGE" value="A few changes XD" />
+    <MESSAGE value="A few changes then ready for FZH Beta 5 XD" />
+    <option name="LAST_COMMIT_MESSAGE" value="A few changes then ready for FZH Beta 5 XD" />
   </component>
 </project>

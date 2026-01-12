@@ -22,11 +22,11 @@ public class FzhConfigManager {
                 
                 if (loadedConfig != null) {
                     FzhConfig.CONFIG = loadedConfig;
-					if (loadedConfig.displayMode == "HEALTH") {
-						FzhConfig.CONFIG.displayMode = "HP";
+					if (loadedConfig.displayMode.toLowerCase() == "health") {
+						FzhConfig.CONFIG.displayMode = "hp";
 						saveConfig();
-					} else if (loadedConfig.displayMode == "DISTANCE") {
-						FzhConfig.CONFIG.displayMode = "DIST";
+					} else if (loadedConfig.displayMode.toLowerCase() == "distance") {
+						FzhConfig.CONFIG.displayMode = "dist";
 						saveConfig();
 					}
 	                

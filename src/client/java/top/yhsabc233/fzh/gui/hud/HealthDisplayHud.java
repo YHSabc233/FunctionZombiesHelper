@@ -2,18 +2,17 @@ package top.yhsabc233.fzh.gui.hud;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.util.Identifier;
-import top.yhsabc233.fzh.FzhClient;
-import top.yhsabc233.fzh.config.FzhConfig;
-import top.yhsabc233.fzh.util.ScoreUtils;
-
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
+import top.yhsabc233.fzh.FzhClient;
+import top.yhsabc233.fzh.config.FzhConfig;
+import top.yhsabc233.fzh.util.ScoreUtils;
 
 import java.util.List;
 
@@ -24,10 +23,10 @@ public class HealthDisplayHud {
 			hpdpRender(drawContext));
 	}*/
 	
-	private static final Identifier HEALTHDISPLAY_HUD_LAYER = Identifier.of(FzhClient.MOD_ID, "healthdisplay-hud-layer");
+	private static final Identifier HEALTH_DISPLAY_HUD_LAYER = Identifier.of(FzhClient.MOD_ID, "healthdisplay-hud-layer");
 	
 	public static void init() {
-		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.MISC_OVERLAYS, HEALTHDISPLAY_HUD_LAYER, HealthDisplayHud::hpdpRender));
+		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, HEALTH_DISPLAY_HUD_LAYER, HealthDisplayHud::hpdpRender));
 	}
 	
 	public static Formatting displayIconColor;
@@ -60,7 +59,7 @@ public class HealthDisplayHud {
 			int x = 0;
 			int y = 0;
 			
-			if (FzhConfig.CONFIG.position.contains("CUSTOM")) {
+			if (FzhConfig.CONFIG.position.toLowerCase().contains("custom")) {
 				x = FzhConfig.CONFIG.hpdpDisplayX;
 				y = FzhConfig.CONFIG.hpdpDisplayY + 5;
 			}
@@ -81,12 +80,13 @@ public class HealthDisplayHud {
 					
 					float health = player.getHealth();
 					float distance = client.player.distanceTo(player);
+					float ping;
 					
 					var networkHandler = MinecraftClient.getInstance().getNetworkHandler();
 					if (networkHandler == null) continue;
 					var entry = networkHandler.getPlayerListEntry(player.getUuid());
 					if (entry == null) continue;
-					float ping = entry.getLatency();
+					ping = entry.getLatency();
 					
 					switch (FzhConfig.CONFIG.colorScheme.toLowerCase()) {
 						case "both":

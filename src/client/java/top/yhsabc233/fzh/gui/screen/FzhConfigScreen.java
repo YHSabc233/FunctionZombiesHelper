@@ -1,7 +1,5 @@
 package top.yhsabc233.fzh.gui.screen;
 
-import top.yhsabc233.fzh.config.FzhConfig;
-import top.yhsabc233.fzh.config.FzhConfigManager;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -9,9 +7,11 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import top.yhsabc233.fzh.config.FzhConfig;
+import top.yhsabc233.fzh.config.FzhConfigManager;
+import top.yhsabc233.fzh.config.FzhConfigYACLApi;
 
 public class FzhConfigScreen extends Screen {
-    // TODO: 优化此类，感觉太乱了。
     private final Screen parent;
     public final Text TITLE_TEXT = Text.translatable("fzh.screen.config.title");
     
@@ -28,48 +28,45 @@ public class FzhConfigScreen extends Screen {
 	
     public SliderWidget hpdpDisplayXSlider;
     public SliderWidget hpdpDisplayYSlider;
-	/*
-	public ButtonWidget setColorSchemeToBothButton;
-	public ButtonWidget setColorSchemeToIconButton;
-	public ButtonWidget setColorSchemeToTextButton;
-	*/
-    public final FzhConfig config = FzhConfig.CONFIG;
+	
+	public ButtonWidget openNewConfigScreenButton;
 	
     @SuppressWarnings("CodeBlock2Expr")
     @Override
     public void init() {
-        valueBeforeNameButton = ButtonWidget.builder(Text.translatable(config.valueBeforeName ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.valueBeforeName")), button -> {
-		        config.valueBeforeName = !config.valueBeforeName;
+        valueBeforeNameButton = ButtonWidget.builder(Text.translatable(FzhConfig.CONFIG.valueBeforeName ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.valueBeforeName")), button -> {
+		        FzhConfig.CONFIG.valueBeforeName = !FzhConfig.CONFIG.valueBeforeName;
 	        })
                 .dimensions(width / 2, 30, 180, 20)
                 .tooltip(Tooltip.of(Text.literal("设置数值是否显示在玩家名称前。")))
                 .build();
         
-        isEnabledButton = ButtonWidget.builder(Text.translatable(config.isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.isEnabled")), button ->{
-		        config.isEnabled = !config.isEnabled;
+        isEnabledButton = ButtonWidget.builder(Text.translatable(FzhConfig.CONFIG
+		        .isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.isEnabled")), button ->{
+		        FzhConfig.CONFIG.isEnabled = !FzhConfig.CONFIG.isEnabled;
 	        })
                 .dimensions(width / 2 - 200, 30, 180, 20)
                 .tooltip(Tooltip.of(Text.literal("调整本模组的全局开关。")))
                 .build();
         
-        alwayDisplayedButton = ButtonWidget.builder(Text.translatable(config.isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.alwaysDisplayed")), button -> {
-		        config.alwaysDisplayed = !config.alwaysDisplayed;
+        alwayDisplayedButton = ButtonWidget.builder(Text.translatable(FzhConfig.CONFIG.isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.alwaysDisplayed")), button -> {
+		        FzhConfig.CONFIG.alwaysDisplayed = !FzhConfig.CONFIG.alwaysDisplayed;
 	        })
                 .dimensions(width / 2 - 200, 60, 180, 20)
                 .tooltip(Tooltip.of(Text.literal("调整是否让血量显示在玩家隐藏HUD时保持显示。")))
                 .build();
         
-        textMarginSlider = new SliderWidget(width / 2, 60, 180, 20, Text.translatable("fzh.options.config.textMargin").append(" : " + config.textMargin), ((double) config.textMargin / 30)) {
+        textMarginSlider = new SliderWidget(width / 2, 60, 180, 20, Text.translatable("fzh.options.config.textMargin").append(" : " + FzhConfig.CONFIG.textMargin), ((double) FzhConfig.CONFIG.textMargin / 30)) {
             @Override
             protected void updateMessage() {
-                setMessage(Text.translatable("fzh.options.config.textMargin").append(" : " + config.textMargin));
+                setMessage(Text.translatable("fzh.options.config.textMargin").append(" : " + FzhConfig.CONFIG.textMargin));
             }
             
             @Override
             protected void applyValue() {
                 int maxValue = 30;
                 double result = value * maxValue;
-                config.textMargin = Double.valueOf(result).intValue();
+                FzhConfig.CONFIG.textMargin = Double.valueOf(result).intValue();
             }
             
         };
@@ -77,10 +74,10 @@ public class FzhConfigScreen extends Screen {
         hpdpDisplayXSlider = new SliderWidget(
 			width / 2 - 200, 90, 380, 20,
 	        Text.translatable("fzh.options.config.hpdpDisplayX")
-		        .append(" : " + config.hpdpDisplayX), ((double) config.hpdpDisplayX / ((double) (client != null ? client.getWindow().getWidth() : 0) / 2 - 95))) {
+		        .append(" : " + FzhConfig.CONFIG.hpdpDisplayX), ((double) FzhConfig.CONFIG.hpdpDisplayX / ((double) (client != null ? client.getWindow().getWidth() : 0) / 2 - 95))) {
             @Override
             protected void updateMessage() {
-                setMessage(Text.translatable("fzh.options.config.hpdpDisplayX").append(" : " + Double.valueOf(config.hpdpDisplayX).intValue()
+                setMessage(Text.translatable("fzh.options.config.hpdpDisplayX").append(" : " + Double.valueOf(FzhConfig.CONFIG.hpdpDisplayX).intValue()
                 ));
             }
             
@@ -89,7 +86,7 @@ public class FzhConfigScreen extends Screen {
                 if (client != null) {
                     int maxValue = client.getWindow().getWidth() / 2 - 95;
                     double result = value * maxValue;
-                    config.hpdpDisplayX = Double.valueOf(result).intValue();
+                    FzhConfig.CONFIG.hpdpDisplayX = Double.valueOf(result).intValue();
                 }
             }
         };
@@ -97,10 +94,10 @@ public class FzhConfigScreen extends Screen {
         hpdpDisplayYSlider = new SliderWidget(
 			width / 2 - 200, 120, 380, 20,
 	        Text.translatable("fzh.options.config.hpdpDisplayY")
-		        .append(" : " + config.hpdpDisplayY), ((double) config.hpdpDisplayY / ((double) (client != null ? client.getWindow().getHeight() : 0) / 2 - 15))) {
+		        .append(" : " + FzhConfig.CONFIG.hpdpDisplayY), ((double) FzhConfig.CONFIG.hpdpDisplayY / ((double) (client != null ? client.getWindow().getHeight() : 0) / 2 - 15))) {
             @Override
             protected void updateMessage() {
-                setMessage(Text.translatable("fzh.options.config.hpdpDisplayY").append(" : " + Double.valueOf(config.hpdpDisplayY).intValue()
+                setMessage(Text.translatable("fzh.options.config.hpdpDisplayY").append(" : " + Double.valueOf(FzhConfig.CONFIG.hpdpDisplayY).intValue()
                 ));
             }
             
@@ -109,42 +106,28 @@ public class FzhConfigScreen extends Screen {
                 if (client != null) {
                     int maxValue = client.getWindow().getHeight() / 2 - 15;
                     double result = value * maxValue;
-                    config.hpdpDisplayY = Double.valueOf(result).intValue();
+                    FzhConfig.CONFIG.hpdpDisplayY = Double.valueOf(result).intValue();
                 }
             }
         };
 	    
-	    /*setColorSchemeToBothButton = ButtonWidget.builder(Text.translatable("fzh.options.text", Text.translatable("fzh.options.config.colorScheme"), Text.literal("相同颜色")), button -> {
-			    config.colorScheme = "BOTH";
+	    openNewConfigScreenButton = ButtonWidget.builder(Text.literal("打开新配置界面"), button ->{
+			    client.send(() -> {
+					close();
+					client.setScreen(FzhConfigYACLApi.createScreen(client.currentScreen));
+			    });
 		    })
-		    .dimensions(width / 2 - 200, 150, 150, 20)
-		    .tooltip(Tooltip.of(Text.literal("调整血量显示的配色方案至 相同颜色")))
+		    .dimensions(width / 2 - 200, 150, 380, 30)
+		    .tooltip(Tooltip.of(Text.literal("打开使用YACL制作的新配置修改界面。\n原来的界面（也就是当前的这个）将会在不久后被移除。")))
 		    .build();
-	    
-	    setColorSchemeToIconButton = ButtonWidget.builder(Text.translatable("fzh.options.text", Text.translatable("fzh.options.config.colorScheme"), Text.literal("仅图标变色")), button -> {
-			    config.colorScheme = "ICON";
-		    })
-		    .dimensions(width / 2, 150, 150, 20)
-		    .tooltip(Tooltip.of(Text.literal("调整血量显示的配色方案至 仅图标变色")))
-		    .build();
-	    
-	    setColorSchemeToTextButton = ButtonWidget.builder(Text.translatable("fzh.options.text", Text.translatable("fzh.options.config.colorScheme"), Text.literal("仅数值变色")), button -> {
-			    config.colorScheme = "TEXT";
-		    })
-		    .dimensions(width / 2 - 200, 180, 150, 20)
-		    .tooltip(Tooltip.of(Text.literal("调整血量显示的配色方案至 仅数值变色")))
-		    .build();
-        */
+		
         this.addDrawableChild(valueBeforeNameButton);
         this.addDrawableChild(isEnabledButton);
         this.addDrawableChild(alwayDisplayedButton);
         this.addDrawableChild(textMarginSlider);
         this.addDrawableChild(hpdpDisplayXSlider);
         this.addDrawableChild(hpdpDisplayYSlider);
-		//this.addDrawableChild(setColorSchemeToBothButton);
-	    //this.addDrawableChild(setColorSchemeToIconButton);
-	    //this.addDrawableChild(setColorSchemeToTextButton);
-	    // TODO: 修复设置配色方案的bug。
+		this.addDrawableChild(openNewConfigScreenButton);
     }
     
     @Override
@@ -172,15 +155,15 @@ public class FzhConfigScreen extends Screen {
 		}
 		
         valueBeforeNameButton.setMessage(
-			Text.translatable(config.valueBeforeName ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.valueBeforeName"))
+			Text.translatable(FzhConfig.CONFIG.valueBeforeName ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.valueBeforeName"))
         );
 		
         isEnabledButton.setMessage(
-			Text.translatable(config.isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.isEnabled"))
+			Text.translatable(FzhConfig.CONFIG.isEnabled ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.isEnabled"))
         );
 		
         alwayDisplayedButton.setMessage(
-			Text.translatable(config.alwaysDisplayed ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.alwaysDisplayed"))
+			Text.translatable(FzhConfig.CONFIG.alwaysDisplayed ? "options.on.composed" : "options.off.composed", Text.translatable("fzh.options.config.alwaysDisplayed"))
         );
 		
     }

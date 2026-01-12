@@ -5,7 +5,9 @@
   "name": "Function Zombies Helper",
   "description": "A helper mod for Function Zombies.",
   "authors": ["YHSabc233"],
-  "contributors": ["XMM010"],
+  "contributors": [
+    "XMM010"
+  ],
   "contact": {
     "homepage": "https://modrinth.com/mod/function-zombies-helper",
     "issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
@@ -29,13 +31,13 @@
     }
   ],
   "depends": {
+    "yet_another_config_lib_v3": ">=3.8.2+1.21.5-fabric",
+    "modmenu": ">=14.0.0",
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": ["1.21.5"]
   },
-  "suggests": {
-    "modmenu": "*"
-  },
+  "suggests": {},
   "custom": {
     "modmenu": {
       "links": {
