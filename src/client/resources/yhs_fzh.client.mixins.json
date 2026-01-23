@@ -1,15 +1,16 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "top.yhsabc233.fzh.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "client": [
-    "TitleScreenMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
-  }
+	"required": true,
+	"minVersion": "0.8",
+	"package": "top.yhsabc233.fzh.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"SoundManagerMixin",
+		"TitleScreenMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
 }

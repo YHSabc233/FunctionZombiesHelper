@@ -1,6 +1,7 @@
 package top.yhsabc233.fzh;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.text.Text;
@@ -8,44 +9,60 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.yhsabc233.fzh.command.FzhCommand;
 import top.yhsabc233.fzh.config.FzhConfig;
+import top.yhsabc233.fzh.config.FzhKeyBinding;
+import top.yhsabc233.fzh.function.ZombiesHologramFix;
 import top.yhsabc233.fzh.gui.hud.HealthDisplayHud;
+import top.yhsabc233.fzh.gui.hud.ZombiesHologramFixHud;
 
+/** FZH 的客户端功能 */
 public class FzhClient implements ClientModInitializer {
- 
-	public static final String MOD_ID = "yhs_fzh";
-    private static final boolean MOD_IS_BETA_VERSION = true;
-    private boolean IS_BETA_TIPS_SHOWN = false;
 	
-    public static final Logger LOGGER = LoggerFactory.getLogger("FZH");
-    
-    @Override
-    public void onInitializeClient() {
-        try {
-	        FzhCommand.init();
-            FzhConfig.init();
-	        
-	        HealthDisplayHud.init();
-	        //TimerHud.init();
-            
-            ClientPlayConnectionEvents.JOIN.register(((clientPlayNetworkHandler, packetSender, minecraftClient) ->{
-				if (!minecraftClient.isInSingleplayer()) {
-					if (MOD_IS_BETA_VERSION && !IS_BETA_TIPS_SHOWN) {
-						SystemToast.add(
-							minecraftClient.getToastManager(),
-							SystemToast.Type.NARRATOR_TOGGLE,
-							Text.translatable("fzh.tips.usingbetaversion.title"),
-							Text.translatable("fzh.tips.usingbetaversion.description")
-						);
-						IS_BETA_TIPS_SHOWN = true;
-					}
-					//ShowSpawnTimeHud.init();
-					//PowerUpHud.init();
+	public static final String MOD_ID = "yhs_fzh";
+	public static final Logger LOGGER = LoggerFactory.getLogger("FZH");
+	
+	/** {@link FzhClient} 是否为测试版 */
+	private static final boolean BETA = true;
+	/** 是否已经用 {@link SystemToast} 提示过当前正在使用测试版 */
+	private boolean BETA_TIP_SHOWN = false;
+	
+	@Override
+	public void onInitializeClient() {
+		try {
+			// 后端
+			FzhKeyBinding.register();
+			FzhCommand.register();
+			FzhConfig.init();
+			
+			// 可视化
+			HealthDisplayHud.register();
+			ZombiesHologramFixHud.register();
+			
+			// 暂时仅用于提示模组是否处于测试版本
+			ClientPlayConnectionEvents.JOIN.register((clientPlayNetworkHandler, packetSender, minecraftClient) -> {
+				if (BETA && !BETA_TIP_SHOWN) {
+					SystemToast.add(
+						minecraftClient.getToastManager(),
+						SystemToast.Type.NARRATOR_TOGGLE,
+						Text.translatable("fzh.tips.usingbetaversion.title"),
+						Text.translatable("fzh.tips.usingbetaversion.description")
+					);
+					BETA_TIP_SHOWN = true;
 				}
-            }));
-            
-            LOGGER.info("[FZH] Function Zombies Helper loaded.");
-        } catch (Exception exception) {
-            LOGGER.error("[FZH] Failed to load Function Zombies Helper! beacuse: {}", String.valueOf(exception));
-        }
-    }
+			});
+			
+			// 暂时仅用于实现键位反馈
+			ClientTickEvents.END_CLIENT_TICK.register(client -> {
+				// 我不希望某个意外导致延迟变成负值然后ZHF爆炸 所以这里选择小于或等于 :(
+				if (ZombiesHologramFix.latencyTick <= 0 && FzhKeyBinding.zhfKey.isPressed())
+					ZombiesHologramFix.toggle();
+				if (ZombiesHologramFix.latencyTick > 0)
+					ZombiesHologramFix.latencyTick--;
+			});
+			
+			LOGGER.info("[FZH] Function Zombies Helper loaded.");
+		} catch (Exception exception) {
+			LOGGER.error("[FZH] Failed to load Function Zombies Helper! beacuse: {}", String.valueOf(exception));
+		}
+	}
+	
 }

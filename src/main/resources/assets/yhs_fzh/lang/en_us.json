@@ -1,60 +1,50 @@
 {
-  "fzh.loaded": "FZH Loaded",
-
-  "modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
-  "modmenu.descriptionTranslation.yhs_fzh": "A helper mod for function zombies.",
-
-  "fzh.enabled": "Function Zombies Helper is enabled now.",
-  "fzh.disabled": "Function Zombies Helper is disabled now.",
-
-  "fzh.tips.usingbetaversion.title": "You're using BETA version of FZH!",
-  "fzh.tips.usingbetaversion.description": "If you encounter any issues, report them to YHSabc233, thanks!",
-
-  "fzh.message.reload": "Config file reloaded",
-  "fzh.message.set": "%s has been set to %s",
-  "fzh.message.language": "Language was changed to %s",
-  "fzh.message.error": "Error: Please type a valid %s value",
-  "fzh.message.error.language": "Switch failed. beacuse: %s",
-  "fzh.message.unknown": "§cUnknown command, please use '/fzh help' to get help.",
-
-  "fzh.message.help_0": "\n§a--- FZH Help ---\n",
-  "fzh.message.help_1": "§a/fzh help : Show the help list.\n",
-  "fzh.message.help_2": "§a/fzh set <ConfigItem> ：Modify an option in a config.\n",
-  "fzh.message.help_3": "§a/fzh reload ：Reload config.\n",
-  "fzh.message.help_4": "§a/fzh switch <E/D> ：Switch mod.\n",
-  "fzh.message.help_5": "§a--- --- --- ---\n",
-  "fzh.message.help_6": "§e(You can also type '/fzh help <config>' to get help about config.)",
-
-  "fzh.message.help.set.title": "\n§a--- FZH Config Help ---\n",
-  "fzh.message.help.set.position": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' §e(like '300 200') §abehind the 'position' then will change the HPDP position.",
-  "fzh.message.help.set.maxPlayersToShow": "§amaxPlayersToShow : Set HPDP's max player show counts.",
-  "fzh.message.help.set.TextMargin": "§atextMargin : Set HPDP's vertical text margin.",
-
-  "fzh.message.set.current": "%s's current value is : %s",
-  "fzh.message.set.positionCustom": "Position has been set to X: %d, Y: %d",
-  "fzh.message.nowPosition": "Position is：X: %d, Y: %d",
-  "fzh.message.set.positionCustom.format": "Please use CUSTOM <X> <Y> (e.g. CUSTOM -180 -50)",
-  "fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 8 or above to avoid overlapping display.",
-
-  "fzh.screen.positionModify.title": "Position Modify GUI",
-  "fzh.screen.positionModify.tips": "Drag text to modify the widget display position.",
-  "fzh.screen.config.title": "FZH Config Modify",
-
-  "key.fzh.playerHidden": "Player Hidden",
-  "key.fzh.category": "Function Zombies Helper",
-
-  "fzh.options.text": "%s : %s",
-  "fzh.options.done": "Done",
-  "fzh.options.cancel": "Cancel",
-  "fzh.options.reset": "Reset",
-  "fzh.options.config.hpdpDisplayX": "HealthDisplay X Position",
-  "fzh.options.config.hpdpDisplayY": "HealthDisplay Y Position",
-  "fzh.options.config.isEnabled": "Mod switch",
-  "fzh.options.config.maxPlayersToShow": "Max players to show",
-  "fzh.options.config.colorScheme": "Color scheme",
-  "fzh.options.config.displayMode": "Display mode",
-  "fzh.options.config.textMargin": "Text margin",
-  "fzh.options.config.alwaysDisplayed": "Always displayed",
-  "fzh.options.config.valueBeforeName": "Display before name"
-
+	"fzh.loaded": "FZH Loaded",
+	
+	"modmenu.nameTranslation.yhs_fzh": "Function Zombies Helper",
+	"modmenu.descriptionTranslation.yhs_fzh": "A helper mod for function zombies.",
+	
+	"fzh.enabled": "Function Zombies Helper is enabled now.",
+	"fzh.disabled": "Function Zombies Helper is disabled now.",
+	
+	"fzh.tips.usingbetaversion.title": "You're using BETA version of FZH!",
+	"fzh.tips.usingbetaversion.description": "If you encounter any issues, report them to YHSabc233, thanks!",
+	
+	"fzh.message.reload": "Config file reloaded",
+	"fzh.message.set": "%s has been set to %s",
+	"fzh.message.language": "Language was changed to %s",
+	"fzh.message.error": "Error: Please type a valid %s value",
+	"fzh.message.error.language": "Switch failed. beacuse: %s",
+	
+	"fzh.message.help.set.position": "§aposition : If you only input the 'position' then will query current HPDP position. \nBut if you add 'x y' §e(like '300 200') §abehind the 'position' then will change the HPDP position.",
+	"fzh.message.help.set.maxPlayersToShow": "§amaxPlayersToShow : Set HPDP's max player show counts.",
+	"fzh.message.help.set.TextMargin": "§atextMargin : Set HPDP's vertical text margin.",
+	
+	"fzh.message.set.current": "%s's current value is : %s",
+	"fzh.message.set.positionCustom": "Position has been set to X: %d, Y: %d",
+	"fzh.message.nowPosition": "Position is：X: %d, Y: %d",
+	"fzh.message.set.positionCustom.format": "Please use CUSTOM <X> <Y> (e.g. CUSTOM -180 -50)",
+	"fzh.message.set.textMargin.warn": "Suggestion: Adjust the text spacing to 8 or above to avoid overlapping display.",
+	
+	"fzh.screen.positionModify.title": "Position Modify GUI",
+	"fzh.screen.positionModify.tips": "Drag text to modify the widget display position.",
+	"fzh.screen.config.title": "FZH Config Modify",
+	
+	"key.fzh.zhf": "ZHF Toggle",
+	"key.fzh.category": "Function Zombies Helper",
+	
+	"fzh.options.text": "%s : %s",
+	"fzh.options.done": "Done",
+	"fzh.options.cancel": "Cancel",
+	"fzh.options.reset": "Reset",
+	"fzh.options.config.hpdpDisplayX": "Health display X Position",
+	"fzh.options.config.hpdpDisplayY": "Health display Y Position",
+	"fzh.options.config.isEnabled": "Mod switch",
+	"fzh.options.config.maxPlayersToShow": "Max players to show",
+	"fzh.options.config.colorScheme": "Color scheme",
+	"fzh.options.config.displayMode": "Display mode",
+	"fzh.options.config.textMargin": "Text margin",
+	"fzh.options.config.alwaysDisplayed": "Always displayed",
+	"fzh.options.config.valueBeforeName": "Display before name"
+	
 }

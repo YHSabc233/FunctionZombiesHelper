@@ -1,56 +1,69 @@
 {
-  "schemaVersion": 1,
-  "id": "yhs_fzh",
-  "version": "${version}",
-  "name": "Function Zombies Helper",
-  "description": "A helper mod for Function Zombies.",
-  "authors": ["YHSabc233"],
-  "contributors": [
-    "XMM010"
-  ],
-  "contact": {
-    "homepage": "https://modrinth.com/mod/function-zombies-helper",
-    "issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
-    "sources": "https://github.com/YHSabc233/FunctionZombiesHelper"
-  },
-  "license": "GPLv3",
-  "icon": "assets/yhs_fzh/icon.png",
-
-  "environment": "client",
-  "entrypoints": {
-    "fabric-datagen": ["top.yhsabc233.fzh.FzhDataGenerator"],
-    "client": ["top.yhsabc233.fzh.FzhClient"],
-    "main": ["top.yhsabc233.fzh.Fzh"],
-    "modmenu": ["top.yhsabc233.fzh.config.FzhConfigModMenuApi"]
-  },
-  "mixins": [
-    "yhs_fzh.mixins.json",
-    {
-      "config": "yhs_fzh.client.mixins.json",
-      "environment": "client"
-    }
-  ],
-  "depends": {
-    "yet_another_config_lib_v3": ">=3.8.2+1.21.5-fabric",
-    "modmenu": ">=14.0.0",
-    "fabricloader": ">=${loader_version}",
-    "fabric": "*",
-    "minecraft": ["1.21.5"]
-  },
-  "suggests": {},
-  "custom": {
-    "modmenu": {
-      "links": {
-      },
-      "badges": [],
-      "parent": {
-        "id": "yhs_fzh",
-        "name": "Function Zombies Helper",
-        "description": "A helper mod for Function Zombies.",
-        "icon": "assets/yhs_fzh/icon.png",
-        "badges": []
-      },
-      "update_checker": true
-    }
-  }
+	"schemaVersion": 1,
+	"id": "yhs_fzh",
+	"version": "${version}",
+	"name": "Function Zombies Helper",
+	"description": "A helper mod for Function Zombies.",
+	"authors": [
+		"YHSabc233"
+	],
+	"contributors": [
+		"XMM010"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/function-zombies-helper",
+		"issues": "https://github.com/YHSabc233/FunctionZombiesHelper/issues",
+		"sources": "https://github.com/YHSabc233/FunctionZombiesHelper"
+	},
+	"license": "GPLv3",
+	"icon": "assets/yhs_fzh/icon.png",
+	
+	"environment": "client",
+	"entrypoints": {
+		"fabric-datagen": [
+			"top.yhsabc233.fzh.FzhDataGenerator"
+		],
+		"client": [
+			"top.yhsabc233.fzh.FzhClient"
+		],
+		"main": [
+			"top.yhsabc233.fzh.Fzh"
+		],
+		"modmenu": [
+			"top.yhsabc233.fzh.config.FzhConfigModMenuApi"
+		]
+	},
+	"mixins": [
+		"yhs_fzh.mixins.json",
+		{
+			"config": "yhs_fzh.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"yet_another_config_lib_v3": ">=3.8.2+1.21.5-fabric",
+		"modmenu": ">=14.0.0",
+		"fabricloader": ">=${loader_version}",
+		"fabric": "*",
+		"fabric-key-binding-api-v1": "*",
+		"minecraft": [
+			"1.21.5"
+		]
+	},
+	"suggests": {},
+	"custom": {
+		"modmenu": {
+			"links": {
+			},
+			"badges": [],
+			"parent": {
+				"id": "yhs_fzh",
+				"name": "Function Zombies Helper",
+				"description": "A helper mod for Function Zombies.",
+				"icon": "assets/yhs_fzh/icon.png",
+				"badges": []
+			},
+			"update_checker": true
+		}
+	}
 }

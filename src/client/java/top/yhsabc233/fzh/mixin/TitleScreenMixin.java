@@ -11,23 +11,20 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TitleScreen.class)
-public class TitleScreenMixin extends Screen{
-	
-	@SuppressWarnings("unused")
+public class TitleScreenMixin extends Screen {
 	protected TitleScreenMixin(Text title) {
 		super(title);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "render")
 	private void fzhLoadedTextRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-		MinecraftClient client = MinecraftClient.getInstance();
-		TitleScreen screen = (TitleScreen)(Object)this;
+		var client = MinecraftClient.getInstance();
 		Text customText = Text.translatable("fzh.loaded");
 		
 		int textWidth = client.textRenderer.getWidth(customText);
 		
-		int x = screen.width - textWidth - 2;
-		int y = screen.height - 20;
+		int x = client.getWindow().getWidth() - textWidth - 2;
+		int y = client.getWindow().getHeight() - 20;
 		
 		context.drawTextWithShadow(client.textRenderer, customText, x, y, 0xFFFFFF);
 	}

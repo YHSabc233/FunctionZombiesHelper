@@ -1,6 +1,3 @@
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GrUnresolvedAccess
-
 plugins {
     id 'fabric-loom' version '1.14-SNAPSHOT'
     id 'maven-publish'
@@ -18,7 +15,9 @@ loom {
 
     mods {
         "yhs_fzh" {
+            //noinspection GroovyAssignabilityCheck
             sourceSet sourceSets.main
+            //noinspection GroovyAssignabilityCheck
             sourceSet sourceSets.client
         }
     }
@@ -47,9 +46,9 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
     modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 }
 
@@ -82,16 +81,11 @@ java {
     withSourcesJar()
 }
 
-jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archives_base_name}" }
-    }
-}
-
 publishing {
     publications {
         create("mavenJava", MavenPublication) {
             artifactId = project.archives_base_name
+            //noinspection GroovyAssignabilityCheck
             from components.java
         }
     }

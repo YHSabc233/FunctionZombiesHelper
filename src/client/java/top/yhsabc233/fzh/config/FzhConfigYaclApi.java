@@ -6,7 +6,7 @@ import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-public class FzhConfigYACLApi {
+public class FzhConfigYaclApi {
 	
 	private static final FzhConfig config = FzhConfig.CONFIG;
 	
@@ -15,19 +15,19 @@ public class FzhConfigYACLApi {
 			.title(Text.literal("FZH Config Title"))
 			.category(ConfigCategory.createBuilder()
 				.name(Text.translatable("fzh.screen.config.title"))
-				.tooltip(Text.literal("基于 YACL 模组制作的全新 FZH 配置修改界面。"))
+				.tooltip(Text.literal("基于 YACL 制作的新 FZH 配置界面。"))
 				
 				.group(OptionGroup.createBuilder()
 					.name(Text.literal("血量显示 配置"))
-					.description(OptionDescription.of(Text.literal("FZH的血量显示配置。")))
+					.description(OptionDescription.of(Text.literal("FZH 的血量显示配置。")))
 					
-					/*.option(
+					.option(
 						Option.<Boolean>createBuilder()
 							.name(Text.literal("血量显示 功能开关"))
-							.description(OptionDescription.of(Text.literal("调整FZH的血量显示功能开关状态。")))
+							.description(OptionDescription.of(Text.literal("调整 FZH 的血量显示功能开关状态。")))
 							.binding(true, () -> config.hpdpSwitch, newVal -> config.hpdpSwitch = newVal)
 							.controller(TickBoxControllerBuilder::create)
-							.build())*/
+							.build())
 					.option(
 						Option.<Integer>createBuilder()
 							.name(Text.translatable("fzh.options.config.hpdpDisplayX"))
@@ -45,7 +45,7 @@ public class FzhConfigYACLApi {
 					/*.option(
 						Option.<String>createBuilder()
 							.name(Text.translatable("fzh.options.config.colorScheme"))
-							.description(OptionDescription.of(Text.literal("设置血量显示的配色方案\n注：因技术原因，需手动输入“both”，“icon”，“text”三个选项。\n填其它内容均会导致血量显示失效。")))
+							.description(OptionDescription.of(Text.literal("设置血量显示的配色方案。\n§l(因技术原因，需手动且只能输入§e“both”，“icon”，“text”§f三个选项。\n§l其余内容均会导致失效。)")))
 							.binding("both", () -> config.colorScheme, newVal -> config.colorScheme = newVal)
 							.controller(StringControllerBuilder::create)
 							.build())*/
@@ -61,7 +61,7 @@ public class FzhConfigYACLApi {
 				
 				.group(OptionGroup.createBuilder()
 					.name(Text.literal("全局 配置"))
-					.description(OptionDescription.of(Text.literal("FZH的全局配置。")))
+					.description(OptionDescription.of(Text.literal("FZH 的全局配置。")))
 					
 					.option(
 						Option.<Boolean>createBuilder()
@@ -77,6 +77,13 @@ public class FzhConfigYACLApi {
 							.binding(10, () -> config.textMargin, newVal -> config.textMargin = newVal)
 							.controller(IntegerFieldControllerBuilder::create)
 							.build())
+					.option(
+						Option.<Boolean>createBuilder()
+							.name(Text.translatable("key.fzh.zhf"))
+							.description(OptionDescription.of(Text.literal("调整ZHF功能的开关状态。\n(如果聊天栏显示ZHF开启但实际是关着的，\n可以在这里手动调整修复。)")))
+							.binding(false, () -> config.zhfSwitch, newVal -> config.zhfSwitch = newVal)
+							.controller(TickBoxControllerBuilder::create)
+							.build())
 					
 					.build())
 				
@@ -85,4 +92,9 @@ public class FzhConfigYACLApi {
 			.build()
 			.generateScreen(parent);
 	}
+	
+	public static Screen init(Screen parent) {
+		return createScreen(parent);
+	}
+	
 }

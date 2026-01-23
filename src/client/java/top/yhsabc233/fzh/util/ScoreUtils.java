@@ -8,23 +8,16 @@ import net.minecraft.scoreboard.ScoreboardObjective;
 
 public class ScoreUtils {
 	public static int playerStat(AbstractClientPlayerEntity player) {
-		MinecraftClient client = MinecraftClient.getInstance();
-		if (client.world == null || client.player == null || client.getNetworkHandler() != null) {
-			return 1;
-		}
+		var client = MinecraftClient.getInstance();
+		if (client.world == null || client.player == null || client.getNetworkHandler() == null) return 1;
 		
 		ScoreHolder scoreHolder = ScoreHolder.fromProfile(player.getGameProfile());
 		
-		ScoreboardObjective statBoard = client.getNetworkHandler().getScoreboard().getNullableObjective("stat.player");
-		
-		if (statBoard == null) {
-			return 1;
-		}
+		ScoreboardObjective statBoard = client.world.getScoreboard().getNullableObjective("stat.player");
+		if (statBoard == null) return 1;
 		
 		ReadableScoreboardScore score = statBoard.getScoreboard().getScore(scoreHolder, statBoard);
-		if (score == null) {
-			return 1;
-		}
+		if (score == null) return 1;
 		
 		return score.getScore();
 	}

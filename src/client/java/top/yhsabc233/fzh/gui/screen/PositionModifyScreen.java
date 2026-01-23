@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
+import net.minecraft.util.Colors;
 import top.yhsabc233.fzh.config.FzhConfig;
 import top.yhsabc233.fzh.config.FzhConfigManager;
 import top.yhsabc233.fzh.gui.widget.DraggableWidget;
@@ -21,10 +22,13 @@ public class PositionModifyScreen extends Screen {
 	public ButtonWidget resetButton;
 	public DraggableWidget hpdpPositionDrag;
 	
+	@SuppressWarnings("CodeBlock2Expr")
 	@Override
 	protected void init() {
-		doneButton = ButtonWidget.builder(Text.translatable("fzh.options.done"), button -> close())
-			.dimensions(width / 2 - 150, height - 25, 100, 20)
+		doneButton = ButtonWidget.builder(Text.translatable("fzh.options.done"), button -> {
+			close();
+		})
+			.dimensions(this.width / 2 - 150, this.height - 25, 100, 20)
 			.tooltip(Tooltip.of(Text.literal("保存当前设置并关闭此界面。")))
 			.build();
 		
@@ -46,17 +50,21 @@ public class PositionModifyScreen extends Screen {
 			"hpdpPositionDrag"
 		);
 		
-		addDrawableChild(doneButton);
-		addDrawableChild(resetButton);
-		addDrawableChild(hpdpPositionDrag);
+		this.addDrawableChild(doneButton);
+		this.addDrawableChild(resetButton);
+		this.addDrawableChild(hpdpPositionDrag);
 	}
 	
 	@Override
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 		super.render(context, mouseX, mouseY, delta);
+		context.drawCenteredTextWithShadow(
+			textRenderer, Text.translatable("fzh.screen.positionModify.tips"), context.getScaledWindowWidth() / 2, context.getScaledWindowHeight() / 2, Colors.WHITE
+		);
 		
-		context.drawTextWithShadow(textRenderer, Text.translatable("fzh.screen.positionModify.tips"), width / 2 - 80, height / 2 - 220, 0xFFFFFF);
-		context.drawTextWithShadow(textRenderer, Text.translatable("fzh.screen.positionModify.title"), width / 2 - 50, height / 2 - 250, 0xFFFFFF);
+		context.drawCenteredTextWithShadow(
+			textRenderer, Text.translatable("fzh.screen.positionModify.title"), context.getScaledWindowWidth() / 2, 20, Colors.WHITE
+		);
 	}
 	
 	@Override
