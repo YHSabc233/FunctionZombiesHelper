@@ -12,7 +12,7 @@ import top.yhsabc233.fzh.config.FzhConfig;
 
 public class ZombiesHologramFixHud {
 	private static final Identifier ZHF_HUD_LAYER = Identifier.of(FzhClient.MOD_ID, "zhf-hud-layer");
-	
+	private static final MinecraftClient client = MinecraftClient.getInstance();
 	public static void register() {
 		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(
 			IdentifiedLayer.CHAT,
@@ -21,13 +21,10 @@ public class ZombiesHologramFixHud {
 		);
 	}
 	
-	private static void zhfRender(DrawContext context, RenderTickCounter tickCounter) {
-		var client = MinecraftClient.getInstance();
+	private static void zhfRender(DrawContext context, RenderTickCounter ignoredTickCounter) {
 		var displayText = "ZHF: " + (FzhConfig.CONFIG.zhfSwitch ? "§aON" : "§cOFF");
-		var x = context.getScaledWindowWidth() - client.textRenderer.getWidth(displayText);
-		var y = 3;
 		
-		context.drawTextWithShadow(client.textRenderer, displayText, x, y, Colors.YELLOW);
+		context.drawTextWithShadow(client.textRenderer, displayText, FzhConfig.CONFIG.zhfDisplayX, FzhConfig.CONFIG.zhfDisplayY, Colors.YELLOW);
 	}
 	
 }

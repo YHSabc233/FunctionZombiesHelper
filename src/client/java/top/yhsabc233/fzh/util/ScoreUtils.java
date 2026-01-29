@@ -6,6 +6,7 @@ import net.minecraft.scoreboard.ReadableScoreboardScore;
 import net.minecraft.scoreboard.ScoreHolder;
 import net.minecraft.scoreboard.ScoreboardObjective;
 
+@SuppressWarnings("unused")
 public class ScoreUtils {
 	public static int playerStat(AbstractClientPlayerEntity player) {
 		var client = MinecraftClient.getInstance();
@@ -21,4 +22,5 @@ public class ScoreUtils {
 		
 		return score.getScore();
 	}
+	
 }

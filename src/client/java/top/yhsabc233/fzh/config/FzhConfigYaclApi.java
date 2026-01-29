@@ -3,8 +3,10 @@ package top.yhsabc233.fzh.config;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import top.yhsabc233.fzh.gui.screen.PositionModifyScreen;
 
 public class FzhConfigYaclApi {
 	
@@ -12,47 +14,40 @@ public class FzhConfigYaclApi {
 	
 	public static Screen createScreen(Screen parent) {
 		return YetAnotherConfigLib.createBuilder()
-			.title(Text.literal("FZH Config Title"))
+			.title(Text.translatable("fzh.screen.config.title"))
 			.category(ConfigCategory.createBuilder()
 				.name(Text.translatable("fzh.screen.config.title"))
-				.tooltip(Text.literal("基于 YACL 制作的新 FZH 配置界面。"))
+				.tooltip(Text.translatable("fzh.screen.config.description"))
 				
 				.group(OptionGroup.createBuilder()
-					.name(Text.literal("血量显示 配置"))
-					.description(OptionDescription.of(Text.literal("FZH 的血量显示配置。")))
+					.name(Text.translatable("fzh.config.group.hpdp.name"))
+					.description(OptionDescription.of(Text.translatable("fzh.config.group.hpdp.description")))
 					
 					.option(
 						Option.<Boolean>createBuilder()
-							.name(Text.literal("血量显示 功能开关"))
-							.description(OptionDescription.of(Text.literal("调整 FZH 的血量显示功能开关状态。")))
+							.name(Text.translatable("fzh.config.hpdpSwitch.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.hpdpSwitch.description")))
 							.binding(true, () -> config.hpdpSwitch, newVal -> config.hpdpSwitch = newVal)
 							.controller(TickBoxControllerBuilder::create)
 							.build())
 					.option(
 						Option.<Integer>createBuilder()
-							.name(Text.translatable("fzh.options.config.hpdpDisplayX"))
-							.description(OptionDescription.of(Text.literal("设置血量显示的X坐标。")))
+							.name(Text.translatable("fzh.config.hpdpDisplayX.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.hpdpDisplayX.description")))
 							.binding(10, () -> config.hpdpDisplayX, newVal -> config.hpdpDisplayX = newVal)
 							.controller(IntegerFieldControllerBuilder::create)
 							.build())
 					.option(
 						Option.<Integer>createBuilder()
-							.name(Text.translatable("fzh.options.config.hpdpDisplayY"))
-							.description(OptionDescription.of(Text.literal("设置血量显示的Y坐标。")))
-							.binding(10, () -> config.hpdpDisplayY, newVal -> config.hpdpDisplayY = newVal)
+							.name(Text.translatable("fzh.config.hpdpDisplayY.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.hpdpDisplayY.description")))
+							.binding(30, () -> config.hpdpDisplayY, newVal -> config.hpdpDisplayY = newVal)
 							.controller(IntegerFieldControllerBuilder::create)
 							.build())
-					/*.option(
-						Option.<String>createBuilder()
-							.name(Text.translatable("fzh.options.config.colorScheme"))
-							.description(OptionDescription.of(Text.literal("设置血量显示的配色方案。\n§l(因技术原因，需手动且只能输入§e“both”，“icon”，“text”§f三个选项。\n§l其余内容均会导致失效。)")))
-							.binding("both", () -> config.colorScheme, newVal -> config.colorScheme = newVal)
-							.controller(StringControllerBuilder::create)
-							.build())*/
 					.option(
 						Option.<Integer>createBuilder()
-							.name(Text.translatable("fzh.options.config.maxPlayersToShow"))
-							.description(OptionDescription.of(Text.literal("设置血量显示的最大玩家显示数量。\n超过此数量会将其余玩家信息隐藏。")))
+							.name(Text.translatable("fzh.config.maxPlayersToShow.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.maxPlayersToShow.description")))
 							.binding(10, () -> config.maxPlayersToShow, newVal -> config.maxPlayersToShow = newVal)
 							.controller(IntegerFieldControllerBuilder::create)
 							.build())
@@ -60,29 +55,56 @@ public class FzhConfigYaclApi {
 					.build())
 				
 				.group(OptionGroup.createBuilder()
-					.name(Text.literal("全局 配置"))
-					.description(OptionDescription.of(Text.literal("FZH 的全局配置。")))
+					.name(Text.translatable("fzh.config.group.zhf.name"))
+					.description(OptionDescription.of(Text.translatable("fzh.config.group.zhf.description")))
 					
 					.option(
 						Option.<Boolean>createBuilder()
-							.name(Text.translatable("fzh.options.config.isEnabled"))
-							.description(OptionDescription.of(Text.literal("调整FZH的全局开关状态。")))
-							.binding(true, () -> config.isEnabled, newVal -> config.isEnabled = newVal)
+							.name(Text.translatable("fzh.config.zhfSwitch.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.zhfSwitch.description")))
+							.binding(false, () -> config.zhfSwitch, newVal -> config.zhfSwitch = newVal)
 							.controller(TickBoxControllerBuilder::create)
 							.build())
 					.option(
 						Option.<Integer>createBuilder()
-							.name(Text.translatable("fzh.options.config.textMargin"))
-							.description(OptionDescription.of(Text.literal("调整FZH的全局上下文本间距。")))
-							.binding(10, () -> config.textMargin, newVal -> config.textMargin = newVal)
+							.name(Text.translatable("fzh.config.zhfDisplayX.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.zhfDisplayX.description")))
+							.binding(10, () -> config.zhfDisplayX, newVal -> config.zhfDisplayX = newVal)
 							.controller(IntegerFieldControllerBuilder::create)
 							.build())
 					.option(
+						Option.<Integer>createBuilder()
+							.name(Text.translatable("fzh.config.zhfDisplayY.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.zhfDisplayY.description")))
+							.binding(10, () -> config.zhfDisplayY, newVal -> config.zhfDisplayY = newVal)
+							.controller(IntegerFieldControllerBuilder::create)
+							.build())
+					
+					.build())
+				
+				.group(OptionGroup.createBuilder()
+					.name(Text.translatable("fzh.config.group.global.name"))
+					.description(OptionDescription.of(Text.translatable("fzh.config.group.global.description")))
+					
+					.option(
+						ButtonOption.createBuilder()
+							.name(Text.translatable("fzh.config.positionModifyScreen.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.positionModifyScreen.description")))
+							.action((yaclScreen, buttonOption) -> MinecraftClient.getInstance().setScreen(new PositionModifyScreen(yaclScreen)))
+							.build())
+					.option(
 						Option.<Boolean>createBuilder()
-							.name(Text.translatable("key.fzh.zhf"))
-							.description(OptionDescription.of(Text.literal("调整ZHF功能的开关状态。\n(如果聊天栏显示ZHF开启但实际是关着的，\n可以在这里手动调整修复。)")))
-							.binding(false, () -> config.zhfSwitch, newVal -> config.zhfSwitch = newVal)
+							.name(Text.translatable("fzh.config.isEnabled.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.isEnabled.description")))
+							.binding(true, () -> config.globalSwitch, newVal -> config.globalSwitch = newVal)
 							.controller(TickBoxControllerBuilder::create)
+							.build())
+					.option(
+						Option.<Integer>createBuilder()
+							.name(Text.translatable("fzh.config.textMargin.name"))
+							.description(OptionDescription.of(Text.translatable("fzh.config.textMargin.description")))
+							.binding(10, () -> config.textMargin, newVal -> config.textMargin = newVal)
+							.controller(IntegerFieldControllerBuilder::create)
 							.build())
 					
 					.build())
@@ -91,10 +113,6 @@ public class FzhConfigYaclApi {
 			.save(FzhConfigManager::saveConfig)
 			.build()
 			.generateScreen(parent);
-	}
-	
-	public static Screen init(Screen parent) {
-		return createScreen(parent);
 	}
 	
 }

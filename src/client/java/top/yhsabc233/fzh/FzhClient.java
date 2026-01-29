@@ -14,15 +14,15 @@ import top.yhsabc233.fzh.function.ZombiesHologramFix;
 import top.yhsabc233.fzh.gui.hud.HealthDisplayHud;
 import top.yhsabc233.fzh.gui.hud.ZombiesHologramFixHud;
 
-/** FZH 的客户端功能 */
 public class FzhClient implements ClientModInitializer {
-	
 	public static final String MOD_ID = "yhs_fzh";
 	public static final Logger LOGGER = LoggerFactory.getLogger("FZH");
 	
-	/** {@link FzhClient} 是否为测试版 */
+	/// The Debug switch, if it's {@code true} will enable some special features for debug.
+	public static final boolean DEBUG = true;
+	/// is FZH working in beta version
 	private static final boolean BETA = true;
-	/** 是否已经用 {@link SystemToast} 提示过当前正在使用测试版 */
+	/// 是否已经提示过当前正在使用测试版本
 	private boolean BETA_TIP_SHOWN = false;
 	
 	@Override
@@ -53,15 +53,14 @@ public class FzhClient implements ClientModInitializer {
 			// 暂时仅用于实现键位反馈
 			ClientTickEvents.END_CLIENT_TICK.register(client -> {
 				// 我不希望某个意外导致延迟变成负值然后ZHF爆炸 所以这里选择小于或等于 :(
-				if (ZombiesHologramFix.latencyTick <= 0 && FzhKeyBinding.zhfKey.isPressed())
-					ZombiesHologramFix.toggle();
-				if (ZombiesHologramFix.latencyTick > 0)
-					ZombiesHologramFix.latencyTick--;
+				if (ZombiesHologramFix.latencyTick <= 0 && FzhKeyBinding.zhfKey.isPressed()) ZombiesHologramFix.toggle();
+				if (ZombiesHologramFix.latencyTick > 0) ZombiesHologramFix.latencyTick--;
 			});
 			
-			LOGGER.info("[FZH] Function Zombies Helper loaded.");
+			LOGGER.info("[FZH] Function Zombies Helper loaded successfully.");
 		} catch (Exception exception) {
-			LOGGER.error("[FZH] Failed to load Function Zombies Helper! beacuse: {}", String.valueOf(exception));
+			LOGGER.error("[FZH] Failed to load Function Zombies Helper!");
+			throw exception;
 		}
 	}
 	

@@ -13,9 +13,11 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import top.yhsabc233.fzh.FzhClient;
 import top.yhsabc233.fzh.config.FzhConfig;
+import top.yhsabc233.fzh.function.HealthDisplay;
 
 public class HealthDisplayHud {
 	private static final Identifier HPDP_HUD_LAYER = Identifier.of(FzhClient.MOD_ID, "hpdp-hud-layer");
+	private static final MinecraftClient client = MinecraftClient.getInstance();
 	
 	public static void register() {
 		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(
@@ -25,103 +27,60 @@ public class HealthDisplayHud {
 		);
 	}
 	
-	private static final MinecraftClient client = MinecraftClient.getInstance();
-	
-	private static void hpdpRender(DrawContext context, RenderTickCounter tickCounter) {
-		if (FzhConfig.CONFIG.isEnabled) {
-			if (client.world == null || client.player == null) return;
-			int shown = 0;
+	private static void hpdpRender(DrawContext context, RenderTickCounter ignoredTickCounter) {
+		if (!HealthDisplay.shouldRender() || client.world == null) return;
+		
+		int shown = 0;
+		int x = FzhConfig.CONFIG.hpdpDisplayX;
+		int y = FzhConfig.CONFIG.hpdpDisplayY + 5;
+		
+		for (AbstractClientPlayerEntity player : client.world.getPlayers()) {
+			if (player.isSpectator() || shown >= FzhConfig.CONFIG.maxPlayersToShow) continue;
+			int health = (int) player.getHealth();
 			
-			int y = FzhConfig.CONFIG.hpdpDisplayY + 5;
+			String healthString = String.valueOf(health);
+			String playerName = player.getName().getString();
 			
-			//Formatting playerNameColor;
 			Formatting healthTextColor;
 			Formatting healthIconColor;
 			
-			MutableText displayText;
+			// 根据血量选择颜色 1~5 红色 6~10 黄色 11+ 绿色
+			if (health > 10) healthTextColor = healthIconColor = Formatting.GREEN;
+			else if (health > 5) healthTextColor = healthIconColor = Formatting.YELLOW;
+			else healthTextColor = healthIconColor = Formatting.RED;
 			
-			if (!client.options.hudHidden || FzhConfig.CONFIG.alwaysDisplayed) {
-				if (FzhConfig.CONFIG.hpdpSwitch) {
-					for (AbstractClientPlayerEntity player : client.world.getPlayers()) {
-						if (player.isSpectator() || shown >= FzhConfig.CONFIG.maxPlayersToShow) continue;
-						
-						float health = player.getHealth();
-						//int playerStat = ScoreUtils.playerStat(player);
-						String hp = String.format("%.0f", health);
-						String displayIcon = "❤";
-						
-						// 根据血量选择颜色 0~4 红色 5~9 黄色 10+ 绿色
-						switch (FzhConfig.CONFIG.colorScheme.toLowerCase()) {
-							case "both":
-								if (health >= 10) {
-									healthTextColor = Formatting.GREEN;
-									healthIconColor = Formatting.GREEN;
-								} else if (health >= 5) {
-									healthTextColor = Formatting.YELLOW;
-									healthIconColor = Formatting.YELLOW;
-								} else {
-									healthTextColor = Formatting.RED;
-									healthIconColor = Formatting.RED;
-								}
-								break;
-							case "icon":
-								healthTextColor = Formatting.GREEN;
-								if (health >= 10) healthIconColor = Formatting.GREEN;
-								else if (health >= 5) healthIconColor = Formatting.YELLOW;
-								else healthIconColor = Formatting.RED;
-								break;
-							case "text":
-								healthIconColor = Formatting.RED;
-								if (health >= 10) healthTextColor = Formatting.GREEN;
-								else if (health >= 5) healthTextColor = Formatting.YELLOW;
-								else healthTextColor = Formatting.RED;
-								break;
-							default:
-								healthTextColor = Formatting.GREEN;
-								healthIconColor = Formatting.RED;
-								break;
-						}
-						
-						// TODO: 实现血量显示会根据玩家状态分颜色显示
-						// 已废弃
-						// 正常白色 倒地金色 死亡深红色 未知深灰色
-						// 调用stat.player
-						// 1 正常 2 倒地 3 死亡 10..旁观
-						/*if (playerStat <= 1) {
-							playerNameColor = Formatting.WHITE;
-						} else if (playerStat == 2) {
-							playerNameColor = Formatting.GOLD;
-						} else if (playerStat == 3) {
-							playerNameColor = Formatting.DARK_RED;
-						} else {
-							playerNameColor = Formatting.DARK_GRAY;
-						}*/
-						
-						if (FzhConfig.CONFIG.valueBeforeName) {
-							displayText = Text.empty().copy()
-								.append(displayIcon.formatted(healthIconColor))
-								.append(" ")
-								.append(hp).copy().formatted(healthTextColor)
-								.append(" ")
-								.append(player.getName().copy().formatted(Formatting.WHITE));
-						} else {
-							displayText = Text.empty().copy()
-								.append(player.getName().copy().formatted(Formatting.WHITE))
-								.append(" ")
-								.append(hp).copy().formatted(healthTextColor)
-								.append(" ")
-								.append(displayIcon.formatted(healthIconColor));
-						}
-						
-						context.drawTextWithShadow(client.textRenderer, displayText, FzhConfig.CONFIG.hpdpDisplayX, y, Colors.WHITE);
-						// 根据屏幕上下部分选择排序方式
-						if (FzhConfig.CONFIG.hpdpDisplayY < (client.getWindow().getScaledHeight() / 2) - 20) y += FzhConfig.CONFIG.textMargin;
-						else y -= FzhConfig.CONFIG.textMargin;
-						shown++;
-					}
-				}
-			}
+			MutableText displayText = FzhConfig.CONFIG.valueBeforeName
+				? Text.empty().copy()
+				.append(ICON.HEART.toString().formatted(healthIconColor))
+				.append(" ")
+				.append(healthString).copy().formatted(healthTextColor)
+				.append(" ")
+				.append(playerName.formatted(Formatting.WHITE))
+				
+				: Text.empty().copy()
+				.append(playerName.formatted(Formatting.WHITE))
+				.append(" ")
+				.append(healthString).copy().formatted(healthTextColor)
+				.append(" ")
+				.append(ICON.HEART.toString().formatted(healthIconColor));
+			
+			context.drawTextWithShadow(client.textRenderer, displayText, x, y, Colors.WHITE);
+			// 根据屏幕上下部分选择排序方式
+			if (FzhConfig.CONFIG.hpdpDisplayY < (client.getWindow().getScaledHeight() / 2) - 20)
+				y += FzhConfig.CONFIG.textMargin;
+			else
+				y -= FzhConfig.CONFIG.textMargin;
+			shown++;
 		}
+	}
+	
+	private enum ICON {
+		HEART("❤"),
+		RULER("📏"),
+		PING("📶")
+		;
+		
+		ICON(String ignored) {}
 	}
 	
 }

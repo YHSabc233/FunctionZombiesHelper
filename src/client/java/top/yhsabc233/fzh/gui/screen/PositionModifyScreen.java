@@ -21,24 +21,26 @@ public class PositionModifyScreen extends Screen {
 	public ButtonWidget doneButton;
 	public ButtonWidget resetButton;
 	public DraggableWidget hpdpPositionDrag;
+	public DraggableWidget zhfPositionDrag;
 	
-	@SuppressWarnings("CodeBlock2Expr")
 	@Override
 	protected void init() {
-		doneButton = ButtonWidget.builder(Text.translatable("fzh.options.done"), button -> {
-			close();
-		})
+		doneButton = ButtonWidget.builder(Text.translatable("fzh.options.done"), button -> close())
 			.dimensions(this.width / 2 - 150, this.height - 25, 100, 20)
 			.tooltip(Tooltip.of(Text.literal("保存当前设置并关闭此界面。")))
 			.build();
 		
 		resetButton = ButtonWidget.builder(Text.translatable("fzh.options.reset"), button -> {
-				hpdpPositionDrag.setPosition(0, 0);
-				FzhConfig.CONFIG.hpdpDisplayX = 0;
-				FzhConfig.CONFIG.hpdpDisplayY = 0;
+				hpdpPositionDrag.setPosition(10, 30);
+				FzhConfig.CONFIG.hpdpDisplayX = 10;
+				FzhConfig.CONFIG.hpdpDisplayY = 30;
+				
+				zhfPositionDrag.setPosition(10, 10);
+				FzhConfig.CONFIG.zhfDisplayX = 10;
+				FzhConfig.CONFIG.zhfDisplayY = 10;
 			})
-			.dimensions(width / 2 + 50, height - 25, 100, 20)
-			.tooltip(Tooltip.of(Text.literal("重置血量显示的坐标至屏幕左上角。")))
+			.dimensions(this.width / 2 + 50, this.height - 25, 100, 20)
+			.tooltip(Tooltip.of(Text.literal("将所有物件的坐标重置为默认。")))
 			.build();
 		
 		
@@ -50,27 +52,44 @@ public class PositionModifyScreen extends Screen {
 			"hpdpPositionDrag"
 		);
 		
+		zhfPositionDrag = new DraggableWidget(
+			FzhConfig.CONFIG.zhfDisplayX,
+			FzhConfig.CONFIG.zhfDisplayY,
+			45,
+			10,
+			"zhfPositionDrag"
+		);
+		
 		this.addDrawableChild(doneButton);
 		this.addDrawableChild(resetButton);
 		this.addDrawableChild(hpdpPositionDrag);
+		this.addDrawableChild(zhfPositionDrag);
 	}
 	
 	@Override
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 		super.render(context, mouseX, mouseY, delta);
+		
 		context.drawCenteredTextWithShadow(
-			textRenderer, Text.translatable("fzh.screen.positionModify.tips"), context.getScaledWindowWidth() / 2, context.getScaledWindowHeight() / 2, Colors.WHITE
+			this.textRenderer,
+			Text.translatable("fzh.screen.positionModify.tips"),
+			this.width / 2,
+			this.height / 2,
+			Colors.WHITE
 		);
 		
 		context.drawCenteredTextWithShadow(
-			textRenderer, Text.translatable("fzh.screen.positionModify.title"), context.getScaledWindowWidth() / 2, 20, Colors.WHITE
+			this.textRenderer,
+			Text.translatable("fzh.screen.positionModify.title"),
+			this.width / 2,
+			10,
+			Colors.WHITE
 		);
 	}
 	
 	@Override
 	public void close() {
-		if (client == null) return;
-		client.setScreen(parent);
+		if (client != null) client.setScreen(parent);
 		FzhConfigManager.saveConfig();
 	}
 }

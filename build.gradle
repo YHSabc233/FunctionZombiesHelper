@@ -1,5 +1,8 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GrUnresolvedAccess
+
 plugins {
-    id 'fabric-loom' version '1.14-SNAPSHOT'
+    id 'fabric-loom' version '1.15-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -15,9 +18,7 @@ loom {
 
     mods {
         "yhs_fzh" {
-            //noinspection GroovyAssignabilityCheck
             sourceSet sourceSets.main
-            //noinspection GroovyAssignabilityCheck
             sourceSet sourceSets.client
         }
     }
@@ -81,11 +82,16 @@ java {
     withSourcesJar()
 }
 
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
 publishing {
     publications {
         create("mavenJava", MavenPublication) {
             artifactId = project.archives_base_name
-            //noinspection GroovyAssignabilityCheck
             from components.java
         }
     }
