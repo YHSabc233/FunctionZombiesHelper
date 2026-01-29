@@ -32,7 +32,7 @@ public class HealthDisplayHud {
 		
 		int shown = 0;
 		int x = FzhConfig.CONFIG.hpdpDisplayX;
-		int y = FzhConfig.CONFIG.hpdpDisplayY + 5;
+		int y = FzhConfig.CONFIG.hpdpDisplayY;
 		
 		for (AbstractClientPlayerEntity player : client.world.getPlayers()) {
 			if (player.isSpectator() || shown >= FzhConfig.CONFIG.maxPlayersToShow) continue;
@@ -40,6 +40,7 @@ public class HealthDisplayHud {
 			
 			String healthString = String.valueOf(health);
 			String playerName = player.getName().getString();
+			String displayIcon = "❤";
 			
 			Formatting healthTextColor;
 			Formatting healthIconColor;
@@ -49,20 +50,28 @@ public class HealthDisplayHud {
 			else if (health > 5) healthTextColor = healthIconColor = Formatting.YELLOW;
 			else healthTextColor = healthIconColor = Formatting.RED;
 			
-			MutableText displayText = FzhConfig.CONFIG.valueBeforeName
+			//TODO: add valuebeforeName
+			/*MutableText displayText = FzhConfig.CONFIG.valueBeforeName
 				? Text.empty().copy()
-				.append(ICON.HEART.toString().formatted(healthIconColor))
+				.append(displayIcon.formatted(healthIconColor))
 				.append(" ")
 				.append(healthString).copy().formatted(healthTextColor)
 				.append(" ")
-				.append(playerName.formatted(Formatting.WHITE))
+				.append(playerName).formatted(Formatting.WHITE)
 				
 				: Text.empty().copy()
 				.append(playerName.formatted(Formatting.WHITE))
 				.append(" ")
 				.append(healthString).copy().formatted(healthTextColor)
 				.append(" ")
-				.append(ICON.HEART.toString().formatted(healthIconColor));
+				.append(displayIcon.formatted(healthIconColor));*/
+			
+			MutableText displayText = Text.empty().copy()
+				.append(displayIcon.formatted(healthIconColor))
+				.append(" ")
+				.append(healthString.formatted(healthTextColor))
+				.append(" ")
+				.append(playerName.formatted(Formatting.WHITE));
 			
 			context.drawTextWithShadow(client.textRenderer, displayText, x, y, Colors.WHITE);
 			// 根据屏幕上下部分选择排序方式
@@ -72,15 +81,6 @@ public class HealthDisplayHud {
 				y -= FzhConfig.CONFIG.textMargin;
 			shown++;
 		}
-	}
-	
-	private enum ICON {
-		HEART("❤"),
-		RULER("📏"),
-		PING("📶")
-		;
-		
-		ICON(String ignored) {}
 	}
 	
 }

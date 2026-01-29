@@ -25,12 +25,12 @@ public class PositionModifyScreen extends Screen {
 	
 	@Override
 	protected void init() {
-		doneButton = ButtonWidget.builder(Text.translatable("fzh.options.done"), button -> close())
+		doneButton = ButtonWidget.builder(Text.translatable("gui.done"), button -> close())
 			.dimensions(this.width / 2 - 150, this.height - 25, 100, 20)
 			.tooltip(Tooltip.of(Text.literal("保存当前设置并关闭此界面。")))
 			.build();
 		
-		resetButton = ButtonWidget.builder(Text.translatable("fzh.options.reset"), button -> {
+		resetButton = ButtonWidget.builder(Text.translatable("controls.reset"), button -> {
 				hpdpPositionDrag.setPosition(10, 30);
 				FzhConfig.CONFIG.hpdpDisplayX = 10;
 				FzhConfig.CONFIG.hpdpDisplayY = 30;

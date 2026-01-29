@@ -16,7 +16,7 @@ public class FzhCommand {
 			LiteralCommandNode<FabricClientCommandSource> fzhConfigNode = ClientCommandManager
 				.literal("fzhconfig")
 				.executes(context -> {
-					client.execute(() -> client.setScreen(FzhConfigYaclApi.createScreen(client.currentScreen)));
+					client.send(() -> client.setScreen(FzhConfigYaclApi.createScreen(client.currentScreen)));
 					return 1;
 				})
 				.build();
@@ -24,7 +24,7 @@ public class FzhCommand {
 			LiteralCommandNode<FabricClientCommandSource> fzhHudNode = ClientCommandManager
 				.literal("fzhhud")
 				.executes(context -> {
-					client.execute(() -> client.setScreen(new PositionModifyScreen(client.currentScreen)));
+					client.send(() -> client.setScreen(new PositionModifyScreen(client.currentScreen)));
 					return 1;
 				})
 				.build();
