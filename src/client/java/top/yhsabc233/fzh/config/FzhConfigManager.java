@@ -24,14 +24,7 @@ public class FzhConfigManager {
 				if (loadedConfig != null) {
 					FzhConfig.CONFIG = loadedConfig;
 					
-					if (loadedConfig.displayMode.toLowerCase() == "health") {
-						FzhConfig.CONFIG.displayMode = "hp";
-						saveConfig();
-					} else if (loadedConfig.displayMode.toLowerCase() == "distance") {
-						FzhConfig.CONFIG.displayMode = "dist";
-						saveConfig();
-					}
-					if (FzhConfig.CONFIG.version < 2) {
+					if (FzhConfig.CONFIG.getVersion() < 2) {
 						saveConfig();
 					}
 					

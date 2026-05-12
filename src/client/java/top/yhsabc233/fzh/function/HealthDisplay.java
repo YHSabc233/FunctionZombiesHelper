@@ -9,7 +9,11 @@ public class HealthDisplay {
 	
 	/// Should {@linkplain HealthDisplayHud} render?
 	public static boolean shouldRender() {
-		return (!client.options.hudHidden || FzhConfig.CONFIG.alwaysDisplayed) && !client.getDebugHud().shouldShowDebugHud() && FzhConfig.CONFIG.hpdpSwitch && FzhConfig.CONFIG.globalSwitch;
+		return !FzhConfig.positionModifying
+			&& (!client.options.hudHidden || FzhConfig.CONFIG.alwaysDisplayed)
+			&& !client.getDebugHud().shouldShowDebugHud()
+			&& FzhConfig.CONFIG.hpdpSwitch
+			&& FzhConfig.CONFIG.globalSwitch;
 	}
 	
 }

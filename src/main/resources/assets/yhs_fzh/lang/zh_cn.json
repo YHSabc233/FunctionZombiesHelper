@@ -7,8 +7,12 @@
 	"fzh.tips.usingbetaversion.title": "你正在使用FZH测试版！",
 	"fzh.tips.usingbetaversion.description": "可能会出现一些bug，欢迎反馈给YHSabc233。",
 	
+	"fzh.message.unkown": "未知的命令，请输入/fzh help获取帮助。",
+
 	"fzh.screen.positionModify.title": "位置修改",
 	"fzh.screen.positionModify.tips": "拖拽文本以修改物件的显示位置。",
+	"fzh.screen.positionModify.doneButton.tooltip": "保存当前设置并关闭此界面。",
+	"fzh.screen.positionModify.resetButton.tooltip": "将所有物件的坐标重置为默认。",
 	"fzh.screen.config.title": "FZH 配置",
 	"fzh.screen.config.description": "基于 YACL 制作的新 FZH 配置界面。",
 	
@@ -26,15 +30,6 @@
 	"fzh.config.maxPlayersToShow.name": "最大玩家显示数量",
 	"fzh.config.maxPlayersToShow.description": "设置血量显示的最大玩家显示数量。\n超过此数量会将多余的玩家信息隐藏。",
 	
-	"fzh.config.group.zhf.name": "ZHF 配置",
-	"fzh.config.group.zhf.description": "FZH 的 Zombies Hologram Fix 配置。",
-	"fzh.config.zhfSwitch.name": "ZHF 功能开关",
-	"fzh.config.zhfSwitch.description": "调整ZHF功能的开关状态。\n(如果聊天栏显示ZHF开启但实际是关闭状态，\n则可以在这里手动调整修复。)",
-	"fzh.config.zhfDisplayX.name": "ZHF X坐标",
-	"fzh.config.zhfDisplayX.description": "设置 ZHF 的X坐标。",
-	"fzh.config.zhfDisplayY.name": "ZHF Y坐标",
-	"fzh.config.zhfDisplayY.description": "设置 ZHF 的Y坐标。",
-	
 	"fzh.config.group.global.name": "全局配置",
 	"fzh.config.group.global.description": "FZH 的全局配置。",
 	"fzh.config.positionModifyScreen.name": "打开位置修改界面",
@@ -44,6 +39,8 @@
 	"fzh.config.textMargin.name": "文本上下间距",
 	"fzh.config.textMargin.description": "调整FZH的全局上下文本间距。",
 	"fzh.config.alwaysDisplayed.name": "始终显示",
-	"fzh.config.valueBeforeName.name": "数值显示在玩家名称前"
+	"fzh.config.alwaysDisplayed.description": "切换是否允许本模组HUD显示覆盖调试信息。",
+	"fzh.config.valueBeforeName.name": "数值显示在玩家名称前",
+	"fzh.config.valueBeforeName.description": "如果启用:\n  ❤ Player1 20\n如果禁用:\n  Player1 20 ❤"
 	
 }

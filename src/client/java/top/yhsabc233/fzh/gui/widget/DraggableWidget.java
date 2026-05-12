@@ -14,11 +14,28 @@ import top.yhsabc233.fzh.gui.screen.PositionModifyScreen;
 
 public class DraggableWidget extends ClickableWidget {
 	private final String widgetName;
+	private double dragOffsetX;
+	private double dragOffsetY;
 	
 	/// 该功能目前仅适用于 {@link PositionModifyScreen}
 	public DraggableWidget(int x, int y, int width, int height, @Nullable String widgetName) {
 		super(x, y, width, height, Text.empty());
 		this.widgetName = widgetName;
+	}
+	
+	@Override
+	protected boolean isValidClickButton(int button) {
+		return button == 0;
+	}
+	
+	@Override
+	public boolean mouseClicked(double mouseX, double mouseY, int button) {
+		if (isValidClickButton(button) && isMouseOver(mouseX, mouseY)) {
+			dragOffsetX = mouseX - getX();
+			dragOffsetY = mouseY - getY();
+			return true;
+		}
+		return super.mouseClicked(mouseX, mouseY, button);
 	}
 	
 	@Override
@@ -31,8 +48,8 @@ public class DraggableWidget extends ClickableWidget {
 			startColor = Colors.WHITE;
 			endColor = Colors.WHITE;
 		} else {
-			startColor = 0;
-			endColor = 0;
+			startColor = 0xAA555555;
+			endColor = 0xAA000000;
 		}
 		
 		context.fillGradient(getX(), getY(), getX() + this.width, getY() + this.height, startColor, endColor);
@@ -55,20 +72,19 @@ public class DraggableWidget extends ClickableWidget {
 	
 	@Override
 	protected void onDrag(double mouseX, double mouseY, double deltaX, double deltaY) {
-		this.setPosition((int) mouseX, (int) mouseY);
+		int newX = (int) (mouseX - dragOffsetX);
+		int newY = (int) (mouseY - dragOffsetY);
+		// 限制在屏幕边界内，至少保留 4px 在可视区域
+		int screenWidth = MinecraftClient.getInstance().getWindow().getScaledWidth();
+		int screenHeight = MinecraftClient.getInstance().getWindow().getScaledHeight();
+		newX = Math.max(-this.width + 4, Math.min(newX, screenWidth - 4));
+		newY = Math.max(-this.height + 4, Math.min(newY, screenHeight - 4));
+		this.setPosition(newX, newY);
 		
 		switch (widgetName) {
 			case "hpdpPositionDrag" -> {
-				FzhConfig.CONFIG.hpdpDisplayX = (int) mouseX;
-				FzhConfig.CONFIG.hpdpDisplayY = (int) mouseY;
-			}
-			/*case "timerPositionDrag" -> {
-				FzhConfig.CONFIG.timerDisplayX = (int) mouseX;
-				FzhConfig.CONFIG.timerDisplayY = (int) mouseY;
-			}*/
-			case "zhfPositionDrag" -> {
-				FzhConfig.CONFIG.zhfDisplayX = (int) mouseX;
-				FzhConfig.CONFIG.zhfDisplayY = (int) mouseY;
+				FzhConfig.CONFIG.hpdpDisplayX = newX;
+				FzhConfig.CONFIG.hpdpDisplayY = newY;
 			}
 			case null, default -> {
 			}

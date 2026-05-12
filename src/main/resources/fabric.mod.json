@@ -50,7 +50,9 @@
 			"1.21.5"
 		]
 	},
-	"suggests": {},
+	"suggests": {
+		"modmenu": ">=14.0.0"
+	},
 	"custom": {
 		"modmenu": {
 			"links": {

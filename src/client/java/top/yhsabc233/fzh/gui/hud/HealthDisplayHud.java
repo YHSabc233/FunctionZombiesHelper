@@ -6,7 +6,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Formatting;
@@ -28,8 +27,8 @@ public class HealthDisplayHud {
 	}
 	
 	private static void hpdpRender(DrawContext context, RenderTickCounter ignoredTickCounter) {
-		if (!HealthDisplay.shouldRender() || client.world == null) return;
-		
+		if (!HealthDisplay.shouldRender() || client.world == null)
+			return;
 		int shown = 0;
 		int x = FzhConfig.CONFIG.hpdpDisplayX;
 		int y = FzhConfig.CONFIG.hpdpDisplayY;
@@ -38,40 +37,57 @@ public class HealthDisplayHud {
 			if (player.isSpectator() || shown >= FzhConfig.CONFIG.maxPlayersToShow) continue;
 			int health = (int) player.getHealth();
 			
-			String healthString = String.valueOf(health);
+			Text healthString = Text.of(String.valueOf(health));
 			String playerName = player.getName().getString();
-			String displayIcon = "❤";
+			Text displayIcon = Text.literal("❤");
 			
 			Formatting healthTextColor;
 			Formatting healthIconColor;
 			
-			// 根据血量选择颜色 1~5 红色 6~10 黄色 11+ 绿色
-			if (health > 10) healthTextColor = healthIconColor = Formatting.GREEN;
-			else if (health > 5) healthTextColor = healthIconColor = Formatting.YELLOW;
-			else healthTextColor = healthIconColor = Formatting.RED;
+			// 根据血量选择颜色 1~5 Red 6~10 Yellow 11+ Green
+			switch (FzhConfig.CONFIG.colorScheme.toLowerCase()) {
+				case "both":
+					if (health > 10) {
+						healthTextColor = Formatting.GREEN;
+						healthIconColor = Formatting.GREEN;
+					} else if (health > 5) {
+						healthTextColor = Formatting.YELLOW;
+						healthIconColor = Formatting.YELLOW;
+					} else {
+						healthTextColor = Formatting.RED;
+						healthIconColor = Formatting.RED;
+					}
+					break;
+				case "icon":
+					if (health > 10) healthIconColor = Formatting.GREEN;
+					else if (health > 5) healthIconColor = Formatting.YELLOW;
+					else healthIconColor = Formatting.RED;
+					healthTextColor = Formatting.GREEN;
+					break;
+				case "text":
+					if (health > 10) healthTextColor = Formatting.GREEN;
+					else if (health > 5) healthTextColor = Formatting.YELLOW;
+					else healthTextColor = Formatting.RED;
+					healthIconColor = Formatting.RED;
+					break;
+				default:
+					return;
+			}
 			
-			//TODO: add valuebeforeName
-			/*MutableText displayText = FzhConfig.CONFIG.valueBeforeName
+			Text displayText = FzhConfig.CONFIG.valueBeforeName
 				? Text.empty().copy()
-				.append(displayIcon.formatted(healthIconColor))
+				.append(displayIcon.copy().formatted(healthIconColor))
 				.append(" ")
-				.append(healthString).copy().formatted(healthTextColor)
+				.append(healthString.copy().formatted(healthTextColor))
 				.append(" ")
-				.append(playerName).formatted(Formatting.WHITE)
+				.append(playerName.formatted(Formatting.WHITE))
 				
 				: Text.empty().copy()
 				.append(playerName.formatted(Formatting.WHITE))
 				.append(" ")
-				.append(healthString).copy().formatted(healthTextColor)
+				.append(healthString.copy().formatted(healthTextColor))
 				.append(" ")
-				.append(displayIcon.formatted(healthIconColor));*/
-			
-			MutableText displayText = Text.empty().copy()
-				.append(displayIcon.formatted(healthIconColor))
-				.append(" ")
-				.append(healthString.formatted(healthTextColor))
-				.append(" ")
-				.append(playerName.formatted(Formatting.WHITE));
+				.append(displayIcon.copy().formatted(healthIconColor));
 			
 			context.drawTextWithShadow(client.textRenderer, displayText, x, y, Colors.WHITE);
 			// 根据屏幕上下部分选择排序方式

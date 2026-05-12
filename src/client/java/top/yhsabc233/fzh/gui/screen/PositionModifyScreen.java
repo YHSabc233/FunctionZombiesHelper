@@ -21,26 +21,23 @@ public class PositionModifyScreen extends Screen {
 	public ButtonWidget doneButton;
 	public ButtonWidget resetButton;
 	public DraggableWidget hpdpPositionDrag;
-	public DraggableWidget zhfPositionDrag;
 	
 	@Override
 	protected void init() {
+		FzhConfig.positionModifying = true;
+		
 		doneButton = ButtonWidget.builder(Text.translatable("gui.done"), button -> close())
 			.dimensions(this.width / 2 - 150, this.height - 25, 100, 20)
-			.tooltip(Tooltip.of(Text.literal("保存当前设置并关闭此界面。")))
+			.tooltip(Tooltip.of(Text.translatable("fzh.screen.positionModify.doneButton.tooltip")))
 			.build();
 		
 		resetButton = ButtonWidget.builder(Text.translatable("controls.reset"), button -> {
 				hpdpPositionDrag.setPosition(10, 30);
 				FzhConfig.CONFIG.hpdpDisplayX = 10;
 				FzhConfig.CONFIG.hpdpDisplayY = 30;
-				
-				zhfPositionDrag.setPosition(10, 10);
-				FzhConfig.CONFIG.zhfDisplayX = 10;
-				FzhConfig.CONFIG.zhfDisplayY = 10;
 			})
 			.dimensions(this.width / 2 + 50, this.height - 25, 100, 20)
-			.tooltip(Tooltip.of(Text.literal("将所有物件的坐标重置为默认。")))
+			.tooltip(Tooltip.of(Text.translatable("fzh.screen.positionModify.resetButton.tooltip")))
 			.build();
 		
 		
@@ -52,18 +49,9 @@ public class PositionModifyScreen extends Screen {
 			"hpdpPositionDrag"
 		);
 		
-		zhfPositionDrag = new DraggableWidget(
-			FzhConfig.CONFIG.zhfDisplayX,
-			FzhConfig.CONFIG.zhfDisplayY,
-			45,
-			10,
-			"zhfPositionDrag"
-		);
-		
 		this.addDrawableChild(doneButton);
 		this.addDrawableChild(resetButton);
 		this.addDrawableChild(hpdpPositionDrag);
-		this.addDrawableChild(zhfPositionDrag);
 	}
 	
 	@Override
@@ -90,6 +78,12 @@ public class PositionModifyScreen extends Screen {
 	@Override
 	public void close() {
 		if (client != null) client.setScreen(parent);
+		FzhConfig.positionModifying = false;
 		FzhConfigManager.saveConfig();
+	}
+	
+	@Override
+	public void removed() {
+		FzhConfig.positionModifying = false;
 	}
 }

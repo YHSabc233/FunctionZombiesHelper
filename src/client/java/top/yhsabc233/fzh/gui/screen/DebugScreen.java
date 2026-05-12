@@ -29,14 +29,6 @@ public class DebugScreen extends Screen {
 			"hpdpPositionDrag"
 		);
 		
-		testDrag2 = new DraggableWidget(
-			FzhConfig.CONFIG.zhfDisplayX,
-			FzhConfig.CONFIG.zhfDisplayY,
-			45,
-			10,
-			"zhfPositionDrag"
-		);
-		
 		ButtonWidget openPositionModifyButton = ButtonWidget.builder(
 			Text.literal("PositionModifyScreen"),
 			button -> {if (client != null) client.setScreen(new PositionModifyScreen(this));}

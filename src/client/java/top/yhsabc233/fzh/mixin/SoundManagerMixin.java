@@ -1,36 +1,8 @@
 package top.yhsabc233.fzh.mixin;
 
-import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.SoundManager;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@SuppressWarnings({"unused"})
 @Mixin(SoundManager.class)
 public class SoundManagerMixin {
-	
-	@Unique
-	public int round;
-	@Unique
-	public int giantCounts;
-	
-	@Inject(at = @At("HEAD"), method = "play(Lnet/minecraft/client/sound/SoundInstance;)V")
-	private void onSoundPlayed(SoundInstance si, CallbackInfo ci) {
-		Identifier id = si.getId();
-		String idString = id.toString();
-		
-		if (id == SoundEvents.ENTITY_WITHER_SPAWN.id()) {
-			round++;
-		/*} else if (id == SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE.id()) {*/
-		
-		} else if (id == SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE.id()) {
-			giantCounts++;
-		}
-	}
-	
 }
